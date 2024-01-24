@@ -1,7 +1,13 @@
-public class Weapon : Item {
+namespace Items {
+    public class Weapon : Item {
 
     private int minimumDamage;
     private int maximumDamage;
+
+
+        public Weapon(string itemName, string itemDescription) : base (itemName, itemDescription) {
+            
+        }
 
 
     public Weapon(string itemName, string itemDescription, int minimumDamage, int maximumDamage) : base (itemName, itemDescription) {
@@ -26,4 +32,5 @@ public class Weapon : Item {
     }
 
 
+    }
 }
