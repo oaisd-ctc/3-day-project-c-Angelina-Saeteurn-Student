@@ -1,1 +1,11 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=13531321)
+Realm Rhapsody is a C# console-based game focused on homeing your damage level on your given weapon by defeating bosses.
+
+-----------------------------------------
+
+If you desire, you can jump straight to the final boss, but otherwise you can beat the easier bosses beforehand, therefore increasing your damage range.
+
+-----------------------------------------
+
+You are given a starting potion and weapon based on your given backstory.
+
+-----------------------------------------

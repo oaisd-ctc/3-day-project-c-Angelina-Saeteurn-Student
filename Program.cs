@@ -4,19 +4,21 @@ class Program
 
     public static void Main(string[] args)
     {
-
+        System.Console.Clear();
 
         System.Console.WriteLine("WELCOME MESSAGE");
         System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
+        
         string userInput = Console.ReadLine();
 
         while (userInput.ToLower() != "quit")
         {
             Console.Clear();
+            
             switch (userInput.ToLower())
             {
                     
-                case "info":
+            case "info":
 
                 System.Console.WriteLine("INFORMATION TEXT\n");
                 System.Console.WriteLine("ENTER NAME, BOSSES, QUIT");
