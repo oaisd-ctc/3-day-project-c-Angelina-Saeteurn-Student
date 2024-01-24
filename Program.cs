@@ -12,25 +12,30 @@ class Program
 
         while (userInput.ToLower() != "quit")
         {
+            Console.Clear();
             switch (userInput.ToLower())
             {
-
+                    
                 case "info":
-                    System.Console.WriteLine("INFORMATION TEXT");
-                    break;
 
-                case "name":
-                    System.Console.WriteLine("RETURNING NAME TEXT");
-                    break;
+                System.Console.WriteLine("INFORMATION TEXT\n");
+                System.Console.WriteLine("ENTER NAME, BOSSES, QUIT");
+                break;
 
-                case "bosses":
-                    System.Console.WriteLine("BOSS CHOICES");
-                    break;
+            case "name":
+                System.Console.WriteLine("NAME TEXT\n");
+                System.Console.WriteLine("ENTER INFO, BOSSES, QUIT");
+                break;
 
-                default:
-                    System.Console.WriteLine("NOT VALID INPUT RESPONSE");
-                    System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
-                    break;
+            case "bosses":
+                System.Console.WriteLine("BOSS CHOICES\n");
+                System.Console.WriteLine("ENTER INFO, NAME, QUIT");
+                break;
+
+            default:
+                System.Console.WriteLine("NOT VALID INPUT RESPONSE\n");
+                System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
+                break;
             }
             userInput = Console.ReadLine();
         }
