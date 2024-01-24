@@ -29,6 +29,7 @@ class Program
 
                 default:
                     System.Console.WriteLine("NOT VALID INPUT RESPONSE");
+                    System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
                     break;
             }
             userInput = Console.ReadLine();
