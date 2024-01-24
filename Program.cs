@@ -4,43 +4,97 @@ class Program
 
     public static void Main(string[] args)
     {
+        PlayerIntroMessage();
 
-
-        System.Console.WriteLine("WELCOME MESSAGE");
         System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
         string userInput = Console.ReadLine();
-
-        while (userInput.ToLower() != "quit")
+        while (userInput != "quit")
         {
-            Console.Clear();
-            switch (userInput.ToLower())
+            if (userInput.ToLower() == "info")
             {
-                    
-                case "info":
+                //Information Options
+                System.Console.WriteLine("Health, Strength, Level, bosses, ...");
+                userInput = Console.ReadLine();
 
-                System.Console.WriteLine("INFORMATION TEXT\n");
-                System.Console.WriteLine("ENTER NAME, BOSSES, QUIT");
-                break;
+                if (userInput.ToLower() == "health")
+                {
 
-            case "name":
-                System.Console.WriteLine("NAME TEXT\n");
-                System.Console.WriteLine("ENTER INFO, BOSSES, QUIT");
-                break;
+                }
+                else if (userInput.ToLower() == "strength")
+                {
 
-            case "bosses":
-                System.Console.WriteLine("BOSS CHOICES\n");
-                System.Console.WriteLine("ENTER INFO, NAME, QUIT");
-                break;
+                }
+                else if (userInput.ToLower() == "level")
+                {
 
-            default:
-                System.Console.WriteLine("NOT VALID INPUT RESPONSE\n");
-                System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
-                break;
+                }
+                else if (userInput.ToLower() == "bosses")
+                {
+                    System.Console.WriteLine("Which level boss do you want information on?\n Level 1. Level 2. Level 3. or Back");
+                    userInput = Console.ReadLine();
+                    if (userInput.ToLower() == "back")
+                    {
+                        System.Console.WriteLine("Health, Strength, Level, bosses, ...");
+                userInput = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("Not a valid response");
+                }
+
             }
-            userInput = Console.ReadLine();
+            if (userInput.ToLower() == "Bosses")
+            {
+                System.Console.WriteLine("Choose boss");
+            }
         }
 
 
-        
+
+        // while (userInput.ToLower() != "quit")
+        // {
+        //     Console.Clear();
+        //     switch (userInput.ToLower())
+        //     {
+
+        //         case "info":
+        //             System.Console.WriteLine("INFORMATION TEXT\n");
+        //             System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
+        //             break;
+
+        //         case "name":
+        //             System.Console.WriteLine("NAME TEXT\n");
+        //             System.Console.WriteLine("ENTER INFO, BOSSES, QUIT");
+        //             break;
+
+        //         case "bosses":
+        //             System.Console.WriteLine("BOSS CHOICES\n");
+        //             System.Console.WriteLine("ENTER INFO, NAME, QUIT");
+        //             break;
+
+        //         default:
+        //             System.Console.WriteLine("NOT VALID INPUT RESPONSE\n");
+        //             System.Console.WriteLine("ENTER INFO, NAME, BOSSES, QUIT");
+        //             break;
+        //     }
+        //     userInput = Console.ReadLine();
+
+        // }
+
+
+
+    }
+
+    public static void PlayerIntroMessage()
+    {
+        System.Console.WriteLine("INTRO MESSAGE");
+        System.Console.WriteLine("ENTER NAME");
+
+        string PlayerName = Console.ReadLine();
+        Console.Clear();
+        System.Console.WriteLine("INTRO BACKGROUND STORY " + PlayerName);
+        //can use the name to implement into the story.
     }
 }
+
