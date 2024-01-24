@@ -1,9 +1,11 @@
-public class Weapon : Item {
+namespace Items {
+    public class Weapon : Item {
 
 
-    public Weapon(string itemName, string itemDescription) : base (itemName, itemDescription) {
-        
+        public Weapon(string itemName, string itemDescription) : base (itemName, itemDescription) {
+            
+        }
+
+
     }
-
-
 }

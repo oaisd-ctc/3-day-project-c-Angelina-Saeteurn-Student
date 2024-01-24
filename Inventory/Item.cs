@@ -1,18 +1,20 @@
-public class Item {
+namespace Items{
+    public class Item {
 
-    protected string itemName;
-    protected string itemDescription;
+        protected string itemName;
+        protected string itemDescription;
 
-    public Item(string itemName, string itemDescription) {
-        this.itemName = itemName;
-        this.itemDescription = itemDescription;
-    }
+        public Item(string itemName, string itemDescription) {
+            this.itemName = itemName;
+            this.itemDescription = itemDescription;
+        }
 
         public string GetItemName() {
-        return itemName;
-    }
+            return itemName;
+        }
 
-    public string GetItemDescription() {
-        return itemDescription;
+        public string GetItemDescription() {
+            return itemDescription;
+        }
     }
 }

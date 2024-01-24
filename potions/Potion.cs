@@ -1,16 +1,20 @@
 using System.IO.Pipes;
 
-namespace potions {
+namespace Items {
 
-    public class Potion{
-        //private string type;
-        //private string idk;
-
-        public Potion() : base(){
+    public class Potion : Item
+    {
+        public Potion (string itemName, string itemDescription) : base(itemName, itemDescription)
+        {
             
         }
-        public static void UseOnSelf(){
-
+        public void UseOnSelf()
+        {
+            Console.WriteLine("You have used the " + itemName + " on yourself.");
+        }
+        public void UseOnEnemy()
+        {
+            Console.WriteLine("You have used the " + itemName + " on the enemy.");
         }
     }    
 }
