@@ -6,7 +6,7 @@ namespace potions {
         private string type;
         private string idk;
 
-        public Potion(ItemName,ItemDescription) : base(ItemName,ItemDescription){
+        public Potion() : base(){
             
         }
         public static void UseOnSelf(){
