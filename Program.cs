@@ -1,4 +1,4 @@
-
+﻿
 using Items;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualBasic;
@@ -127,18 +127,7 @@ class Program
     }
 
 
-    public static void LoadingVisual()
-    {
-        int loadingPauseTime = 300;
-        int numberOfDots = 3;
-
-        for (int i = 0; i < numberOfDots; i++)
-        {
-            System.Console.Write(".");
-            Thread.Sleep(loadingPauseTime);
-        }
-
-    }
+    
 
     public static string GenerateBackground()
     {
@@ -147,9 +136,15 @@ class Program
         string background = "";
 
 
-        LoadingVisual();
-        System.Console.WriteLine("Generating your character background");
-        LoadingVisual();
+        Console.Clear();
+        System.Console.WriteLine("\nGenerating your character background");
+        for (int i = 0; i < 6; i++)
+        {
+            System.Console.Write(".");
+            Thread.Sleep(500);
+        }
+        Console.Clear();
+        
 
 
         //COME UP WITH FOUR BACKGROUNDS
@@ -172,61 +167,12 @@ class Program
         {
             //BACKGROUND FOUR
         }
-      
+
         return background;
     }
 
-  
-  
-  
-  
-                if (userInput.ToLower() == "name")
-                {
-                    LoadingVisual();
-                    Console.Clear();
-                    System.Console.WriteLine("Your name is: " + userName + ".\n");
-
-                    while (userInput != "back")
-                    {
-                        System.Console.WriteLine("Type back to go back or Edit to edit your name.");
-                        userInput = Console.ReadLine();
-                        if (userInput.ToLower() == "quit")
-                        {
-                            break;
-                        }
-                        else if (userInput.ToLower() == "edit")
-                        {
-                            LoadingVisual();
-                            Console.Clear();
-                            System.Console.WriteLine("Enter your new name.\n");
-                            userName = Console.ReadLine();
-                            LoadingVisual();
-                            Console.Clear();
-                            System.Console.WriteLine("Your new name is: " + userName + ".\n");
-                            System.Console.WriteLine("Type back to go back or Edit to edit your name.");
-                            userInput = Console.ReadLine();
-                        }
-                        else
-                        {
-                            LoadingVisual();
-                            Console.Clear();
-                        }
-                    }
-
-                    LoadingVisual();
-                    Console.Clear();
-                    continue;
-                }
-
-                if (userInput.ToLower() == "quit")
-                {
-                    break;
-                }
-            }
-
-
     public static string GenerateBackgroundDescription(string background)
-    {  
+    {
         string backgroundDescription = "NONE";
 
         //COME UP WITH DESCRIPTIONS FOR THE FOUR BACKGROUNDS
@@ -315,10 +261,25 @@ class Program
         return weapon;
     }
 
-    public static void NotValidResponseMessage()
+    static void NotValidResponseMessage()
     {
         System.Console.WriteLine("NOT A VALID RESPONSE.");
         LoadingVisual();
     }
+    public static void LoadingVisual()
+    {
+        int loadingPauseTime = 400;
+        int numberOfDots = 3;
+        
+
+        for (int i = 0; i < numberOfDots; i++)
+        {
+            System.Console.Write(".");
+            Thread.Sleep(loadingPauseTime);
+        }
+        Console.Clear();
+
+    }
 }
+
 

@@ -24,9 +24,14 @@ public class Enemy
         //Boss attacks? or does an action.
     }
 
-        public virtual void Action2()
+    public virtual void Action2()
     {
         //Boss attacks? or does an action.
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 
 }
