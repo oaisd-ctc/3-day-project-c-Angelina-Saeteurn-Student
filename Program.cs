@@ -1,7 +1,6 @@
 ﻿
 using Items;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.VisualBasic;
+
 
 class Program
 {
@@ -110,7 +109,36 @@ class Program
 
             else if (userInput.ToLower() == "fight")
             {
-                //ADD FIGHTING MECHANIC
+                Enemy bossOne = new Enemy("BOSS ONE", 100, 20, 40, true, "Location");
+                Enemy bossTwo = new Enemy("BOSS TWO", 100, 20, 40, true, "Location");
+                Enemy bossThree = new Enemy("BOSS THREE", 100, 20, 40, true, "Location");
+
+                while (true)
+                {
+                    Console.Clear();
+                    Console.WriteLine("BOSS 1, 2, 3 OR BACK");
+                    userInput = Console.ReadLine();
+
+                    if (userInput.ToLower() == "1")
+                    {
+                        FightLoop(player, bossOne);
+                    }
+
+                    else if (userInput.ToLower() == "1")
+                    {
+                        FightLoop(player, bossTwo);
+                    }
+
+                    else if (userInput.ToLower() == "1")
+                    {
+                        FightLoop(player, bossThree);
+                    }
+
+                    else if (userInput.ToLower() == "back")
+                    {
+                        break;
+                    }
+                }
             }
 
             else
@@ -180,7 +208,6 @@ class Program
 
         return background;
     }
-
 
     public static Potion GeneratePotionFromBackground(string background)
     {
@@ -264,6 +291,20 @@ class Program
         Console.Clear();
 
     }
+
+    public static void FightLoop(Player player, Enemy chosenBoss)
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine($"HEALTH : {player.GetHealth()}");
+            Console.WriteLine($"BOSS : {chosenBoss}");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("\n>>ATTACK \n>>INVENTORY \n>>RUN AWAY");
+        }
+    }
+
 }
 
 
