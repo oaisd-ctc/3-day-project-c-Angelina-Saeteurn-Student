@@ -1,4 +1,5 @@
 ﻿
+using Enemies;
 using Items;
 
 
@@ -107,9 +108,9 @@ class Program
 
             else if (userInput.ToLower() == "fight")
             {
-                Enemy bossOne = new Enemy("BOSS ONE", 100, 20, 40, true, "Location");
-                Enemy bossTwo = new Enemy("BOSS TWO", 100, 20, 40, true, "Location");
-                Enemy bossThree = new Enemy("BOSS THREE", 100, 20, 40, true, "Location");
+                Boss1 bossOne = new Boss1("BOSS ONE", 100, 20, 40, true, "Location");
+                Boss2 bossTwo = new Boss2("BOSS TWO", 100, 20, 40, true, "Location");
+                Boss3 bossThree = new Boss3("BOSS THREE", 100, 20, 40, true, "Location");
 
                 while (true)
                 {
