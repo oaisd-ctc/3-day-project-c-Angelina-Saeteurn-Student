@@ -153,22 +153,22 @@ class Program
         //COME UP WITH FOUR BACKGROUNDS
         if (randomBackground == 1)
         {
-            //BACKGROUND ONE
+            Console.WriteLine("Volcanic land of Alchemy");
         }
 
         else if (randomBackground == 2)
         {
-            //BACKGROUND TWO
+            Console.WriteLine("Marshland");
         }
 
         else if (randomBackground == 3)
         {
-            //BACKGROUND THREE
+            Console.WriteLine("Artic Freeze");
         }
 
         else if (randomBackground == 4)
         {
-            //BACKGROUND FOUR
+            Console.WriteLine("");
         }
 
         return background;
