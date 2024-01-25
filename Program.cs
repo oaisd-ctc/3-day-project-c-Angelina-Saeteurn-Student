@@ -275,6 +275,7 @@ class Program
         System.Console.WriteLine("NOT A VALID RESPONSE.");
         // LoadingVisual();
     }
+
     public static void LoadingVisual()
     {
         int loadingPauseTime = 400;
@@ -299,7 +300,68 @@ class Program
             Console.WriteLine($"BOSS : {chosenBoss}");
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("\n>>ATTACK \n>>INVENTORY \n>>RUN AWAY");
+            Console.WriteLine("\n>>ATTACK \n>>POTIONS \n>>RUN AWAY");
+            userInput = Console.ReadLine();
+
+            if (userInput.ToLower() == "attack")
+            {
+
+            }
+            else if (userInput.ToLower() == "potions")
+            {
+                Potion[] inventory = player.GetInventory();
+
+                for (int i = 0; i != 5; i++)
+                {
+                    Console.WriteLine($"{i++} - {inventory[i]}");
+                }
+
+
+                Console.WriteLine("CHOOSE NUMBER OR BACK");
+                userInput = Console.ReadLine();
+
+
+                if (userInput.ToLower() == "1")
+                {
+                    Potion one = inventory[0];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "2")
+                {
+                    Potion two = inventory[1];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "3")
+                {
+                    Potion three = inventory[2];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "4")
+                {
+                    Potion four = inventory[3];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "5")
+                {
+                    Potion five = inventory[4];
+                    //add function to use
+                }
+
+            }
+            
+            else if (userInput.ToLower() == "run away")
+            {
+
+                Console.Clear();
+                Console.WriteLine("Are you sure?");
+                userInput = Console.ReadLine();
+
+                if (userInput.ToLower() == "yes")
+                {
+                    break;
+                }
+                else { }
+            }
         }
     }
 
