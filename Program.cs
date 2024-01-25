@@ -1,11 +1,14 @@
-using Items;
 
+using Items;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.VisualBasic;
 
 class Program
 {
 
     public static void Main(string[] args)
     {
+
 
         System.Console.Clear();
         System.Console.WriteLine("Welcome to Realm Rhapsody!");
@@ -22,10 +25,16 @@ class Program
         System.Console.WriteLine(GenerateBackgroundDescription(background));
 
         System.Console.WriteLine("ENTER ANYTHING TO CONTINUE");
+
+
         string userInput = Console.ReadLine();
+        string userName = userInput;
+        LoadingVisual();
+        Console.Clear();
 
         while (userInput != "quit")
         {
+
             System.Console.Clear();
             System.Console.WriteLine("INFO, FIGHT, OR QUIT...");
             userInput = Console.ReadLine();
@@ -127,7 +136,6 @@ class Program
         {
             System.Console.Write(".");
             Thread.Sleep(loadingPauseTime);
-
         }
 
     }
@@ -164,9 +172,58 @@ class Program
         {
             //BACKGROUND FOUR
         }
-
+      
         return background;
     }
+
+  
+  
+  
+  
+                if (userInput.ToLower() == "name")
+                {
+                    LoadingVisual();
+                    Console.Clear();
+                    System.Console.WriteLine("Your name is: " + userName + ".\n");
+
+                    while (userInput != "back")
+                    {
+                        System.Console.WriteLine("Type back to go back or Edit to edit your name.");
+                        userInput = Console.ReadLine();
+                        if (userInput.ToLower() == "quit")
+                        {
+                            break;
+                        }
+                        else if (userInput.ToLower() == "edit")
+                        {
+                            LoadingVisual();
+                            Console.Clear();
+                            System.Console.WriteLine("Enter your new name.\n");
+                            userName = Console.ReadLine();
+                            LoadingVisual();
+                            Console.Clear();
+                            System.Console.WriteLine("Your new name is: " + userName + ".\n");
+                            System.Console.WriteLine("Type back to go back or Edit to edit your name.");
+                            userInput = Console.ReadLine();
+                        }
+                        else
+                        {
+                            LoadingVisual();
+                            Console.Clear();
+                        }
+                    }
+
+                    LoadingVisual();
+                    Console.Clear();
+                    continue;
+                }
+
+                if (userInput.ToLower() == "quit")
+                {
+                    break;
+                }
+            }
+
 
     public static string GenerateBackgroundDescription(string background)
     {  
@@ -192,7 +249,6 @@ class Program
         {
             //BACKGROUND FOUR
         }
-
         return backgroundDescription;
     }
 
