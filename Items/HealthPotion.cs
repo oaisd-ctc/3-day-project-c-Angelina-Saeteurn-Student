@@ -1,4 +1,6 @@
 using System.IO.Pipes;
+using Enemies;
+
 
 namespace Items {
 
@@ -13,9 +15,9 @@ namespace Items {
         {
             Console.WriteLine($"{Character} has used the Health Potion.");
         }
-        public virtual void UseOnEnemy(Player Character)
+        public virtual void UseOnEnemy(Enemy Villian)
         {
-            Console.WriteLine($"{Character} used the Health Potion on the enemy. (Why did you do that.)");
+            Console.WriteLine($"You used the Health Potion on the enemy. (Why did you do that.)");
         }
     }    
 }
