@@ -1,10 +1,9 @@
-﻿
+﻿﻿
 using Items;
 
 
 class Program
 {
-    public static string playerName;
     public static string userInput;
 
     public static void Main(string[] args)
@@ -15,14 +14,11 @@ class Program
         System.Console.WriteLine("Welcome to Realm Rhapsody!");
         System.Console.WriteLine("Please enter your character's name:");
 
-        playerName = Console.ReadLine();
-        CreatePlayer(background);
-
+        string playerName = Console.ReadLine();
+        Player player = CreatePlayer(background, playerName);
 
         // Thread.Sleep(300);
-
-        System.Console.WriteLine("Here's your character's background:");
-        System.Console.WriteLine(GenerateBackgroundDescription(background));
+        GenerateBackground();
 
         System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
 
@@ -158,7 +154,7 @@ class Program
 
 
 
-    public static Player CreatePlayer(string background)
+    public static Player CreatePlayer(string background, string playerName)
     {
 
         Potion startingPotion = GeneratePotionFromBackground(background);
@@ -306,5 +302,4 @@ class Program
     }
 
 }
-
 
