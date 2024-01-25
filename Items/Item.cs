@@ -1,4 +1,4 @@
-namespace Items{
+namespace Items {
     public class Item {
 
         protected string itemName;
