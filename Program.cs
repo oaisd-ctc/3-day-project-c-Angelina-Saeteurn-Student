@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 using Items;
 
 
@@ -84,19 +84,42 @@ class Program
                     {
                         Thread.Sleep(500);
                         Console.Clear();
-                        System.Console.WriteLine("BOSSES FOUND, BOSSES BEATEN, OR BACK");
+                        System.Console.WriteLine("BOSSES FOUND, BOSSES BEATEN, BACK, OR QUIT");
                         userInput = Console.ReadLine();
 
-                        if (userInput.ToLower() == "")
+                        if (userInput.ToLower() == "bosses found")
+                        {
 
-                            if (userInput.ToLower() == "back")
-                            {
-                                continue;
-                            }
+                        }
+                        else if (userInput.ToLower() == "bosses beaten")
+                        {
+
+                        }
+                        else if (userInput.ToLower() == "back")
+                        {
+                            continue;
+                        }
+                        else if (userInput.ToLower() == "quit")
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            System.Console.WriteLine("Not a valid response\n");
+                            System.Console.WriteLine("BOSSES FOUND, BOSSES BEATEN, OR BACK");
+                            userInput = Console.ReadLine();
+
+                        }
+
                     }
-                }
 
-                else if (userInput.ToLower() == "back")
+                    if (userInput.ToLower() == "back")
+                    {
+                        continue;
+                    }
+
+                }
+                if (userInput.ToLower() == "back")
                 {
                     continue;
                 }
@@ -109,38 +132,41 @@ class Program
                 Enemy bossTwo = new Enemy("BOSS TWO", 100, 20, 40, true, "Location");
                 Enemy bossThree = new Enemy("BOSS THREE", 100, 20, 40, true, "Location");
 
-                while (true)
+
+                Console.Clear();
+                Console.WriteLine("BOSS 1, 2, 3 OR BACK");
+                userInput = Console.ReadLine();
+
+                if (userInput.ToLower() == "1")
                 {
-                    Console.Clear();
-                    Console.WriteLine("BOSS 1, 2, 3 OR BACK");
-                    userInput = Console.ReadLine();
-
-                    if (userInput.ToLower() == "1")
-                    {
-                        FightLoop(player, bossOne);
-                    }
-
-                    else if (userInput.ToLower() == "1")
-                    {
-                        FightLoop(player, bossTwo);
-                    }
-
-                    else if (userInput.ToLower() == "1")
-                    {
-                        FightLoop(player, bossThree);
-                    }
-
-                    else if (userInput.ToLower() == "back")
-                    {
-                        break;
-                    }
+                    FightLoop(player, bossOne);
                 }
+
+                else if (userInput.ToLower() == "1")
+                {
+                    FightLoop(player, bossTwo);
+                }
+
+                else if (userInput.ToLower() == "1")
+                {
+                    FightLoop(player, bossThree);
+                }
+
+                else if (userInput.ToLower() == "back")
+                {
+                    continue;
+                }
+
             }
 
             else
             {
+
                 Console.Clear();
                 NotValidResponseMessage();
+                System.Console.WriteLine("INFO, FIGHT, OR QUIT...");
+                userInput = Console.ReadLine();
+                
             }
 
             if (userInput.ToLower() == "quit")
@@ -151,8 +177,6 @@ class Program
         }
 
     }
-
-
 
     public static Player CreatePlayer(string background, string playerName)
     {
@@ -187,7 +211,7 @@ class Program
         {
 
             background = "Lava";
-            Console.WriteLine("Volcanic land of Alchemy");
+            Console.WriteLine("Volcanic land of Alchemy\n");
             //description
 
         }
@@ -195,14 +219,14 @@ class Program
         else if (randomBackground == 2)
         {
 
-            Console.WriteLine("Marshland");
+            Console.WriteLine("Marshland\n");
 
         }
 
         else if (randomBackground == 3)
         {
 
-            Console.WriteLine("Artic Freeze");
+            Console.WriteLine("Arctic Freeze");
 
         }
 
