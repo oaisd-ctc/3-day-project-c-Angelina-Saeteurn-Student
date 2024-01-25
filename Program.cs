@@ -1,7 +1,6 @@
-
+﻿
 using Items;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.VisualBasic;
+
 
 class Program
 {
@@ -110,7 +109,36 @@ class Program
 
             else if (userInput.ToLower() == "fight")
             {
-                //ADD FIGHTING MECHANIC
+                Enemy bossOne = new Enemy("BOSS ONE", 100, 20, 40, true, "Location");
+                Enemy bossTwo = new Enemy("BOSS TWO", 100, 20, 40, true, "Location");
+                Enemy bossThree = new Enemy("BOSS THREE", 100, 20, 40, true, "Location");
+
+                while (true)
+                {
+                    Console.Clear();
+                    Console.WriteLine("BOSS 1, 2, 3 OR BACK");
+                    userInput = Console.ReadLine();
+
+                    if (userInput.ToLower() == "1")
+                    {
+                        FightLoop(player, bossOne);
+                    }
+
+                    else if (userInput.ToLower() == "1")
+                    {
+                        FightLoop(player, bossTwo);
+                    }
+
+                    else if (userInput.ToLower() == "1")
+                    {
+                        FightLoop(player, bossThree);
+                    }
+
+                    else if (userInput.ToLower() == "back")
+                    {
+                        break;
+                    }
+                }
             }
 
             else
@@ -172,61 +200,12 @@ class Program
         {
             //BACKGROUND FOUR
         }
-      
+
         return background;
     }
 
-  
-  
-  
-  
-                if (userInput.ToLower() == "name")
-                {
-                    LoadingVisual();
-                    Console.Clear();
-                    System.Console.WriteLine("Your name is: " + userName + ".\n");
-
-                    while (userInput != "back")
-                    {
-                        System.Console.WriteLine("Type back to go back or Edit to edit your name.");
-                        userInput = Console.ReadLine();
-                        if (userInput.ToLower() == "quit")
-                        {
-                            break;
-                        }
-                        else if (userInput.ToLower() == "edit")
-                        {
-                            LoadingVisual();
-                            Console.Clear();
-                            System.Console.WriteLine("Enter your new name.\n");
-                            userName = Console.ReadLine();
-                            LoadingVisual();
-                            Console.Clear();
-                            System.Console.WriteLine("Your new name is: " + userName + ".\n");
-                            System.Console.WriteLine("Type back to go back or Edit to edit your name.");
-                            userInput = Console.ReadLine();
-                        }
-                        else
-                        {
-                            LoadingVisual();
-                            Console.Clear();
-                        }
-                    }
-
-                    LoadingVisual();
-                    Console.Clear();
-                    continue;
-                }
-
-                if (userInput.ToLower() == "quit")
-                {
-                    break;
-                }
-            }
-
-
     public static string GenerateBackgroundDescription(string background)
-    {  
+    {
         string backgroundDescription = "NONE";
 
         //COME UP WITH DESCRIPTIONS FOR THE FOUR BACKGROUNDS
@@ -320,5 +299,19 @@ class Program
         System.Console.WriteLine("NOT A VALID RESPONSE.");
         LoadingVisual();
     }
+
+    public static void FightLoop(Player player, Enemy chosenBoss)
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine($"HEALTH : {player.GetHealth()}");
+            Console.WriteLine($"BOSS : {chosenBoss}");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("\n>>ATTACK \n>>INVENTORY \n>>RUN AWAY");
+        }
+    }
+
 }
 
