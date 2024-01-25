@@ -1,4 +1,5 @@
 using System.IO.Pipes;
+using System.Runtime.CompilerServices;
 
 namespace Items {
 
@@ -8,13 +9,13 @@ namespace Items {
         {
             
         }
-        public void UseOnSelf()
+        public virtual void UseOnPlayer(Player Character)
         {
-            Console.WriteLine($"You have used the {itemName} on yourself.");
+            Console.WriteLine($"{Character} has used the {itemName}.");
         }
-        public void UseOnEnemy()
+        public virtual void UseOnEnemy(Enemy Villian)
         {
-            Console.WriteLine($"You have used the {itemName} on the enemy.");
+            Console.WriteLine($"You have used the {itemName} on the {Villian}.");
         }
     }    
 }

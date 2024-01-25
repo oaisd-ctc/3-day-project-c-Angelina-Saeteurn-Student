@@ -34,4 +34,12 @@ public class Enemy
         return health;
     }
 
+    public int SetHealth()
+    {
+        return health;
+    }
+        public string GetName()
+    {
+        return name;
+    }
 }
