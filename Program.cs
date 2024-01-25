@@ -13,7 +13,9 @@ class Program
         System.Console.Clear();
         System.Console.WriteLine("Welcome to Realm Rhapsody!");
         System.Console.WriteLine("Please enter your character's name:");
-        string playerName = Console.ReadLine();
+        string userInput = Console.ReadLine();
+        string playerName = userInput;
+        Thread.Sleep(300);
 
         string background = GenerateBackground();
         Potion startingPotion = GeneratePotionFromBackground(background);
@@ -24,11 +26,11 @@ class Program
         System.Console.WriteLine("Here's your character's background:");
         System.Console.WriteLine(GenerateBackgroundDescription(background));
 
-        System.Console.WriteLine("ENTER ANYTHING TO CONTINUE");
+        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
 
 
-        string userInput = Console.ReadLine();
-        string userName = userInput;
+        Console.ReadKey();
+        System.Console.WriteLine("");
         LoadingVisual();
         Console.Clear();
 
@@ -38,52 +40,51 @@ class Program
             System.Console.Clear();
             System.Console.WriteLine("INFO, FIGHT, OR QUIT...");
             userInput = Console.ReadLine();
+            LoadingVisual();
 
             if (userInput.ToLower() == "info")
             {
-                while (true)
-                {
-                    LoadingVisual();
+                
+
                     System.Console.Clear();
 
-                    System.Console.WriteLine("PLAYER INFORMATION, BOSS INFORMATION, OR BACK...");
+                    System.Console.WriteLine("PLAYER INFO, BOSS INFO, OR BACK...");
                     userInput = Console.ReadLine();
 
-                    if (userInput.ToLower() == "player information")
+                    if (userInput.ToLower() == "player info")
                     {
-                        while (true)
+
+                        LoadingVisual();
+                        System.Console.Clear();
+
+                        System.Console.WriteLine("HEALTH, STRENGTH, OR BACK...");
+                        userInput = Console.ReadLine();
+
+                        LoadingVisual();
+                        System.Console.Clear();
+
+                        if (userInput.ToLower() == "health")
                         {
-                            LoadingVisual();
-                            System.Console.Clear();
-
-                            System.Console.WriteLine("HEALTH, STRENGTH, OR BACK...");
+                            System.Console.WriteLine("Your current health is:");
+                            System.Console.WriteLine("Enter Back to go back");
                             userInput = Console.ReadLine();
-
-                            LoadingVisual();
-                            System.Console.Clear();
-
-                            if (userInput.ToLower() == "health")
-                            {
-                                System.Console.WriteLine("Your current health is:");
-                                System.Console.WriteLine("Enter Back to go back");
-                                userInput = Console.ReadLine();
-                            }
-
-                            else if (userInput.ToLower() == "strength")
-                            {
-                                System.Console.WriteLine("Your current strength is:");
-                                System.Console.WriteLine("Enter Back to go back");
-                                userInput = Console.ReadLine();
-                            }
-
-                            else if (userInput.ToLower() == "back")
-                            {
-                                break;
-                            }
                         }
+
+                        else if (userInput.ToLower() == "strength")
+                        {
+                            System.Console.WriteLine("Your current strength is:");
+                            System.Console.WriteLine("Enter Back to go back");
+                            userInput = Console.ReadLine();
+                        }
+
+                        else if (userInput.ToLower() == "back")
+                        {
+                            continue;
+                        }
+
                     }
 
-                    if (userInput.ToLower() == "boss information")
+                    if (userInput.ToLower() == "boss info")
                     {
                         while (true)
                         {
@@ -96,16 +97,16 @@ class Program
 
                                 if (userInput.ToLower() == "back")
                                 {
-                                    break;
+                                    continue;
                                 }
                         }
                     }
 
                     else if (userInput.ToLower() == "back")
                     {
-                        break;
+                        continue;
                     }
-                }
+                
             }
 
             else if (userInput.ToLower() == "fight")
@@ -123,11 +124,13 @@ class Program
             {
                 break;
             }
+            break;
         }
+
     }
 
 
-    
+
 
     public static string GenerateBackground()
     {
@@ -144,7 +147,7 @@ class Program
             Thread.Sleep(500);
         }
         Console.Clear();
-        
+
 
 
         //COME UP WITH FOUR BACKGROUNDS
@@ -270,7 +273,7 @@ class Program
     {
         int loadingPauseTime = 400;
         int numberOfDots = 3;
-        
+
 
         for (int i = 0; i < numberOfDots; i++)
         {
