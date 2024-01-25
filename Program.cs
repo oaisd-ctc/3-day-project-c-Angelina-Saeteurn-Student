@@ -5,23 +5,22 @@ using Microsoft.VisualBasic;
 
 class Program
 {
+    public static string playerName;
+    public static string userInput;
 
     public static void Main(string[] args)
     {
-
+        string background = GenerateBackground();
 
         System.Console.Clear();
         System.Console.WriteLine("Welcome to Realm Rhapsody!");
         System.Console.WriteLine("Please enter your character's name:");
-        string userInput = Console.ReadLine();
-        string playerName = userInput;
-        Thread.Sleep(300);
 
-        string background = GenerateBackground();
-        Potion startingPotion = GeneratePotionFromBackground(background);
-        Weapon weapon = GenerateWeaponFromBackground(background);
+        playerName = Console.ReadLine();
+        CreatePlayer(background);
 
-        Player player = new Player(playerName, startingPotion, weapon);
+
+        // Thread.Sleep(300);
 
         System.Console.WriteLine("Here's your character's background:");
         System.Console.WriteLine(GenerateBackgroundDescription(background));
@@ -31,7 +30,7 @@ class Program
 
         Console.ReadKey();
         System.Console.WriteLine("");
-        LoadingVisual();
+        // LoadingVisual();
         Console.Clear();
 
         while (userInput != "quit")
@@ -40,73 +39,73 @@ class Program
             System.Console.Clear();
             System.Console.WriteLine("INFO, FIGHT, OR QUIT...");
             userInput = Console.ReadLine();
-            LoadingVisual();
+            // LoadingVisual();
 
             if (userInput.ToLower() == "info")
             {
-                
 
+
+                System.Console.Clear();
+
+                System.Console.WriteLine("PLAYER INFO, BOSS INFO, OR BACK...");
+                userInput = Console.ReadLine();
+
+                if (userInput.ToLower() == "player info")
+                {
+
+                    // LoadingVisual();
                     System.Console.Clear();
 
-                    System.Console.WriteLine("PLAYER INFO, BOSS INFO, OR BACK...");
+                    System.Console.WriteLine("HEALTH, STRENGTH, OR BACK...");
                     userInput = Console.ReadLine();
 
-                    if (userInput.ToLower() == "player info")
+                    // LoadingVisual();
+                    System.Console.Clear();
+
+                    if (userInput.ToLower() == "health")
                     {
-
-                        LoadingVisual();
-                        System.Console.Clear();
-
-                        System.Console.WriteLine("HEALTH, STRENGTH, OR BACK...");
+                        System.Console.WriteLine("Your current health is:");
+                        System.Console.WriteLine("Enter Back to go back");
                         userInput = Console.ReadLine();
-
-                        LoadingVisual();
-                        System.Console.Clear();
-
-                        if (userInput.ToLower() == "health")
-                        {
-                            System.Console.WriteLine("Your current health is:");
-                            System.Console.WriteLine("Enter Back to go back");
-                            userInput = Console.ReadLine();
-                        }
-
-                        else if (userInput.ToLower() == "strength")
-                        {
-                            System.Console.WriteLine("Your current strength is:");
-                            System.Console.WriteLine("Enter Back to go back");
-                            userInput = Console.ReadLine();
-                        }
-
-                        else if (userInput.ToLower() == "back")
-                        {
-                            continue;
-                        }
-
                     }
 
-                    if (userInput.ToLower() == "boss info")
+                    else if (userInput.ToLower() == "strength")
                     {
-                        while (true)
-                        {
-                            Thread.Sleep(500);
-                            Console.Clear();
-                            System.Console.WriteLine("BOSSES FOUND, BOSSES BEATEN, OR BACK");
-                            userInput = Console.ReadLine();
-
-                            if (userInput.ToLower() == "")
-
-                                if (userInput.ToLower() == "back")
-                                {
-                                    continue;
-                                }
-                        }
+                        System.Console.WriteLine("Your current strength is:");
+                        System.Console.WriteLine("Enter Back to go back");
+                        userInput = Console.ReadLine();
                     }
 
                     else if (userInput.ToLower() == "back")
                     {
                         continue;
                     }
-                
+
+                }
+
+                if (userInput.ToLower() == "boss info")
+                {
+                    while (true)
+                    {
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        System.Console.WriteLine("BOSSES FOUND, BOSSES BEATEN, OR BACK");
+                        userInput = Console.ReadLine();
+
+                        if (userInput.ToLower() == "")
+
+                            if (userInput.ToLower() == "back")
+                            {
+                                continue;
+                            }
+                    }
+                }
+
+                else if (userInput.ToLower() == "back")
+                {
+                    continue;
+                }
+
             }
 
             else if (userInput.ToLower() == "fight")
@@ -131,12 +130,21 @@ class Program
 
 
 
+    public static Player CreatePlayer(string background)
+    {
+
+        Potion startingPotion = GeneratePotionFromBackground(background);
+        Weapon weapon = GenerateWeaponFromBackground(background);
+        Player player = new Player(playerName, startingPotion, weapon);
+
+        return player;
+    }
 
     public static string GenerateBackground()
     {
         Random rnd = new Random();
         int randomBackground = rnd.Next(1, 5);
-        string background = "";
+        string background = " ";
 
 
         Console.Clear();
@@ -144,7 +152,7 @@ class Program
         for (int i = 0; i < 6; i++)
         {
             System.Console.Write(".");
-            Thread.Sleep(500);
+            // Thread.Sleep(500);
         }
         Console.Clear();
 
@@ -153,53 +161,26 @@ class Program
         //COME UP WITH FOUR BACKGROUNDS
         if (randomBackground == 1)
         {
-            //BACKGROUND ONE
+            background = "snow";
+            System.Console.WriteLine("Background is Snow.");
+            //description
         }
 
         else if (randomBackground == 2)
         {
-            //BACKGROUND TWO
         }
 
         else if (randomBackground == 3)
         {
-            //BACKGROUND THREE
         }
 
         else if (randomBackground == 4)
         {
-            //BACKGROUND FOUR
         }
 
         return background;
     }
 
-    public static string GenerateBackgroundDescription(string background)
-    {
-        string backgroundDescription = "NONE";
-
-        //COME UP WITH DESCRIPTIONS FOR THE FOUR BACKGROUNDS
-        if (background == "")
-        {
-            //BACKGROUND ONE
-        }
-
-        else if (background == "")
-        {
-            //BACKGROUND TWO
-        }
-
-        else if (background == "")
-        {
-            //BACKGROUND THREE
-        }
-
-        else if (background == "")
-        {
-            //BACKGROUND FOUR
-        }
-        return backgroundDescription;
-    }
 
     public static Potion GeneratePotionFromBackground(string background)
     {
@@ -209,9 +190,9 @@ class Program
 
 
         //CHANGE POTION NAME AND DESCRIPTION VARIABLES IN EVERY OUTCOME
-        if (background == "")
+        if (background == "snow")
         {
-            //BACKGROUND ONE STARTING POTION
+            //BACKGROUND ONE STARTING POTION - Snow potion for snow background
         }
 
         else if (background == "")
@@ -267,7 +248,7 @@ class Program
     static void NotValidResponseMessage()
     {
         System.Console.WriteLine("NOT A VALID RESPONSE.");
-        LoadingVisual();
+        // LoadingVisual();
     }
     public static void LoadingVisual()
     {
