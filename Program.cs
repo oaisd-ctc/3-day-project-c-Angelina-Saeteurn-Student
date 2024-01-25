@@ -185,21 +185,33 @@ class Program
         //COME UP WITH FOUR BACKGROUNDS
         if (randomBackground == 1)
         {
-            background = "snow";
-            System.Console.WriteLine("Background is Snow.");
+
+            background = "Lava";
+            Console.WriteLine("Volcanic land of Alchemy");
             //description
+
         }
 
         else if (randomBackground == 2)
         {
+
+            Console.WriteLine("Marshland");
+
         }
 
         else if (randomBackground == 3)
         {
+
+            Console.WriteLine("Artic Freeze");
+
         }
 
         else if (randomBackground == 4)
         {
+
+            Console.WriteLine("");
+
+
         }
 
         return background;
