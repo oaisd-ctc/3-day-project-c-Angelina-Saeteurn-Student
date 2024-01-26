@@ -392,17 +392,30 @@ class Program
 
                     if (userInput.ToLower() == "attack")
                     {
+                        Console.Clear();
                         if (player.GetWeapon() == "Magma Sear Blade") {
                             Console.WriteLine($"You sear slashed {bossName}!");
+                            Thread.Sleep(500);
+                            isPlayersTurn=false;
+                            break;
                         }
-                        if (player.GetWeapon() == "Bogreaper Scythe") {
-                            Console.WriteLine("");
+                        else if (player.GetWeapon() == "Bogreaper Scythe") {
+                            Console.WriteLine($"You Bog Sliced {bossName}");
+                            Thread.Sleep(500);
+                            isPlayersTurn=false;
+                            break;
                         }
-                        if (player.GetWeapon() == "Glacial Embrace Blade") {
-                            
+                        else if (player.GetWeapon() == "Glacial Embrace Blade") {
+                            Console.WriteLine($"You Glacial Sliced {bossName}");
+                            Thread.Sleep(500);
+                            isPlayersTurn=false;
+                            break;
                         }
-                        if (player.GetWeapon() == "Windshard Longbow") {
-                            
+                        else if (player.GetWeapon() == "Windshard Longbow") {
+                            Console.WriteLine($"You Windshard bowed {bossName}!");
+                            Thread.Sleep(5000);
+                            isPlayersTurn=false;
+                            break;
                         }
                     }
                     else if (userInput.ToLower() == "potions")
@@ -464,7 +477,11 @@ class Program
                     }
                 }
                 while (isPlayersTurn == false) {
-
+                    Console.Clear();
+                    chosenBoss.Attack();
+                    Thread.Sleep(6000);
+                    isPlayersTurn=true;
+                    
                 }
             }
         }

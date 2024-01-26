@@ -20,7 +20,7 @@ namespace Enemies{
             this.enemyLocation = enemyLocation;
         }
 
-        public virtual int Attack()
+        public override int Attack()
         {
             Random Ran = new Random();
             int damage = Ran.Next(minDamage,maxDamage);
