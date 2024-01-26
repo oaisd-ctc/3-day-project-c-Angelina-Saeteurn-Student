@@ -20,9 +20,26 @@ namespace Enemies{
             this.enemyLocation = enemyLocation;
         }
 
-        public virtual void Attack()
+        public virtual int Attack()
         {
-
+            Random Ran = new Random();
+            int damage = Ran.Next(minDamage,maxDamage);
+            if (damage==5){
+                Console.WriteLine($"He goes in for a fistbump and it statically shocks you, ow, you take {damage} damage");
+            }
+            else if(damage<=5){
+                Console.WriteLine($"you take {damage} emotional damage.");
+            }
+            else if(damage<=10){
+                Console.WriteLine($"He takes out a shovel, scoops up some snow and launches it at you, you take {damage} damage.");
+            }
+            else if(damage<20){
+                Console.WriteLine($"'It's time for my new spell, The Baja Blast Freeze!' That was cold you take {damage} damage.");
+            }
+            else if(damage==30){
+                Console.WriteLine($"'Here's your daily logic' NOOOOOOOOOO you take {damage} Damage.");
+            }
+            return damage;
         }
 
         public virtual void Action2()

@@ -34,18 +34,6 @@ class Program
             // LoadingVisual();
             System.Console.Clear();
 
-
-
-
-
-
-
-
-
-
-
-
-
             if (userInput.ToLower() == "info")
             {
 
@@ -53,7 +41,6 @@ class Program
                 {
                     System.Console.WriteLine("Enter: Player info, Boss info, or Back.");
                     userInput = Console.ReadLine();
-
 
                     if (userInput.ToLower() == "player info" || userInput.ToLower() == "player" || userInput.ToLower() == "player ")
                     {
@@ -76,22 +63,23 @@ class Program
                                 userInput = "player info";
                                 continue;
 
-
                             }
 
                             else if (userInput.ToLower() == "strength")
                             {
-                                System.Console.WriteLine("Your current strength is:");
-                                System.Console.WriteLine("Enter Back to go back");
-                                userInput = Console.ReadLine();
+                                System.Console.WriteLine("Your current strength is: ");
+                                System.Console.WriteLine("Press any button to go back.");
+                                Console.ReadKey();
+                                userInput = "player info";
                                 continue;
                             }
 
-                            else if (userInput.ToLower() == "back")
+                            else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                             {
                                 userInput = "info";
                                 break;
                             }
+
                             else if (userInput.ToLower() == "back")
                             {
                                 // LoadingVisual();
@@ -111,6 +99,7 @@ class Program
                             {
                                 break;
                             }
+
                             else
                             {
                                 Console.Clear();
@@ -143,7 +132,7 @@ class Program
                                     System.Console.WriteLine("Enter Back to go back");
                                     userInput = Console.ReadLine();
                                 }
-                                else if (userInput.ToLower() == "back")
+                                else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                                 {
                                     break;
                                     Console.Clear();
@@ -161,7 +150,7 @@ class Program
 
                             }
 
-                            if (userInput.ToLower() == "back")
+                            if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                             {
                                 continue;
                             }
@@ -169,11 +158,22 @@ class Program
                         }
 
                     }
-                    if (userInput.ToLower() == "back")
+                    if (userInput.ToLower() == "boss")
+                    {
+
+                    }
+                    if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                     {
                         // LoadingVisual();
                         Console.Clear();
                         break;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        NotValidResponseMessage();
+                        LoadingVisual();
+                        continue;
                     }
                 }
 
@@ -181,9 +181,9 @@ class Program
 
             if (userInput.ToLower() == "fight")
             {
-                Boss1 bossOne = new Boss1("BOSS ONE", 100, 20, 40, true, "Location");
-                Boss2 bossTwo = new Boss2("BOSS TWO", 100, 20, 40, true, "Location");
-                Boss3 bossThree = new Boss3("BOSS THREE", 100, 20, 40, true, "Location");
+                Boss1 bossOne = new Boss1("The Frugal Financier, Aedan the Penny-Pinching Tycoon", 100, 1, 21, true, "The Limosa Umbra Sanctum, in the Marshland");
+                Boss2 bossTwo = new Boss2("The Enigmatic Soverign, Mister Luyk the Arcane Luminary", 100, 5, 31, true, "Frostweave Spire, in the Arctic Freeze");
+                Boss3 bossThree = new Boss3("The Infernal Warlord, Emannuel The Scorched Conquerer", 100, 10, 41, true, "The Eternal Caldera, in the Vocanic Lands");
 
 
                 Console.Clear();
@@ -205,7 +205,7 @@ class Program
                     FightLoop(player, bossThree, bossThree.GetName(), player.GetName());
                 }
 
-                else if (userInput.ToLower() == "back")
+                else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                 {
                     continue;
                 }
@@ -215,18 +215,16 @@ class Program
             {
                 break;
             }
-            else if (userInput.ToLower() == "back")
+            else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
             {
                 continue;
             }
             else
             {
-
                 Console.Clear();
                 NotValidResponseMessage();
                 LoadingVisual();
                 continue;
-
             }
 
             break;
@@ -249,48 +247,36 @@ class Program
         int randomBackground = rnd.Next(1, 5);
         string background = " ";
 
-
         Console.Clear();
         System.Console.WriteLine("\nGenerating your character background");
-        for (int i = 0; i < 6; i++)
-        {
-            System.Console.Write(".");
-            // Thread.Sleep(500);
-        }
-        Console.Clear();
+        LoadingVisual();
 
-
-
-        //COME UP WITH FOUR BACKGROUNDS
         if (randomBackground == 1)
         {
 
-            background = "Lava";
-            Console.WriteLine("Volcanic land of Alchemy\n");
-            //description
+            background = "Marsh";
+            Console.WriteLine("Background: \n Within the Marshland, life thrives amidst the ethereal mist and labyrinthine waterways. The air is thick with the heady scent of decay and the symphony of unseen creatures. Wisps of fog weave through twisted mangroves, and the inhabitants, attuned to the swamp's rhythm, move with a quiet grace through the murky depths. The shadowy spires of ancient cypress trees stand sentinel, where secrets are whispered through rustling leaves and the swamp's heart beats with an enigmatic pulse.");
 
         }
 
         else if (randomBackground == 2)
         {
-
-            Console.WriteLine("Marshland\n");
+            background = "Lava";
+            Console.WriteLine("Background: \nAmidst the Volcanic land of Alchemy, existence is a dance within the radiant warmth and ancient mystique. Luminescent energies pulsate through the air, casting a perpetual glow upon the inhabitants who navigate the incandescent pathways of this scorching realm. The towering pyro-spires stand as testament to the mastery of elemental forces, where each heartbeat resonates with the untamed vitality of the living flames.");
 
         }
 
         else if (randomBackground == 3)
         {
-
-            Console.WriteLine("Arctic Freeze");
+            background = "Snow";
+            Console.WriteLine("Background: \nIn the frozen solitude of the Glacial Citadel, life unfolds amidst shimmering ice and ancient enchantments. Wisps of frost weave through the air as the inhabitants, attuned to the icy symphony, navigate crystalline corridors. The wizard's tower, a spire of enchanted ice, stands sentinel against the relentless chill, where every breath feels like a whispered incantation. \n ");
 
         }
 
         else if (randomBackground == 4)
         {
-
-            Console.WriteLine("Something");
-
-
+            background = "Plains";
+            Console.WriteLine("In the vast expanse of the Dreamweaver Plains, where golden sunlight bathes the rolling hills, a hidden Apothecary Dell is a sanctuary for healers and seekers alike. Amidst the sea of swaying grasses and vibrant wildflowers, a mystical Well of Vitality emerges. Legends speak of the wellspring's magical waters, enriched by the purity of the meadow's essence.");
         }
 
         return background;
@@ -304,22 +290,22 @@ class Program
 
 
         //CHANGE POTION NAME AND DESCRIPTION VARIABLES IN EVERY OUTCOME
-        if (background == "snow")
+        if (background == "Lava")
         {
-            //BACKGROUND ONE STARTING POTION - Snow potion for snow background
+            
         }
 
-        else if (background == "")
+        else if (background == "Marsh")
         {
             //BACKGROUND TWO STARTING POTION
         }
 
-        else if (background == "")
+        else if (background == "Snow")
         {
             //BACKGROUND THREE STARTING POTION
         }
 
-        else if (background == "")
+        else if (background == "Plains")
         {
             //BACKGROUND FOUR STARTING POTION
         }

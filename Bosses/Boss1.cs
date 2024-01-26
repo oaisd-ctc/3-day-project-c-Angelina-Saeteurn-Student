@@ -20,9 +20,28 @@ namespace Enemies{
             this.enemyLocation = enemyLocation;
         }
 
-        public virtual void Attack()
+
+        public virtual int Attack()
+
         {
-            //You've Mucho-ed your last mango
+            Random Ran = new Random();
+            int damage = Ran.Next(minDamage,maxDamage);
+            if (damage==1){
+                Console.WriteLine("He takes out a penny, and throws it at you, it lands on top of your head... Ow, you take 1 emotional damage.");
+            }
+            else if(damage<=5){
+                Console.WriteLine($"He takes a doller bill and rips it in half... why did he do that ... you take {damage} emotional damage.");
+            }
+            else if(damage<=10){
+                Console.WriteLine($" he shakes a can of Arizona brand Mucho Mango, and it explodes, gross, you take {damage} damage.");
+            }
+            else if(damage<20){
+                Console.WriteLine($"he just straight up throws a can at you, it hits you in the head, YEOUCH! You take {damage} damage.");
+            }
+            else if(damage==20){
+                Console.WriteLine("'You've Mucho-ed your last mango' He takes out a cash gun and KABOOM, You take 20 damage.");
+            }
+            return damage;
         }
 
         public virtual void Action2()
