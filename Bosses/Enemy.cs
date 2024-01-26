@@ -19,9 +19,9 @@ namespace Enemies{
             this.enemyLocation = enemyLocation;
         }
 
-        public virtual void Attack()
+        public virtual int Attack()
         {
-
+            return 0;
         }
 
         public virtual void Action2()
