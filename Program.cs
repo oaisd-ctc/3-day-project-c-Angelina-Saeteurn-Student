@@ -393,6 +393,7 @@ class Program
                     if (userInput.ToLower() == "attack")
                     {
                         Console.Clear();
+                        LoadingVisual();
                         if (player.GetWeapon() == "Magma Sear Blade") {
                             Console.WriteLine($"You sear slashed {bossName}!");
                             Thread.Sleep(500);
@@ -478,6 +479,7 @@ class Program
                 }
                 while (isPlayersTurn == false) {
                     Console.Clear();
+                    LoadingVisual();
                     chosenBoss.Attack();
                     Thread.Sleep(6000);
                     isPlayersTurn=true;
