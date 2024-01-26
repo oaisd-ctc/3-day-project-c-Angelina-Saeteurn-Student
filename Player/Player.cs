@@ -5,7 +5,8 @@ public class Player
     private int health;
     private string name;
     private Weapon weapon;
-    private Potion[] inventory = new Potion[4];
+    private Potion[] inventory = new Potion[5];
+    private Potion empty = new Potion("EMPTY", "EMPTY");
 
     public Player(string name, Potion startingPotion, Weapon weapon)
     {
@@ -14,11 +15,19 @@ public class Player
         health = 100;
 
         inventory[0] = startingPotion;
+        inventory[1] = empty;
+        inventory[2] = empty;
+        inventory[3] = empty;
+        inventory[4] = empty;
     }
 
     public void SetName(string newName)
     {
         name = newName;
+    }
+
+    public string GetName() {
+        return name;
     }
 
     public int GetHealth()
@@ -31,8 +40,8 @@ public class Player
         health += addHealth;
     }
 
-    public Weapon GetWeapon() {
-        return weapon;
+    public string GetWeapon() {
+        return weapon.GetItemName();
     }
 
     public Potion[] GetInventory() {
