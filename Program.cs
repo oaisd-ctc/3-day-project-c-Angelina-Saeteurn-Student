@@ -384,8 +384,9 @@ class Program
                     Console.Clear();
                     Console.WriteLine($"{playerName} VS {bossName}");
                     Console.WriteLine();
-                    Console.WriteLine($"HEALTH : {player.GetHealth()}");
                     Console.WriteLine($"BOSS : {bossName}");
+                    Console.WriteLine($"BOSS HEALTH : {chosenBoss.GetHealth()}");
+                    Console.WriteLine($"HEALTH : {player.GetHealth()}");
                     Console.WriteLine();
                     Console.WriteLine();
                     Console.WriteLine("\n>>ATTACK \n>>POTIONS \n>>RUN AWAY");
@@ -393,10 +394,6 @@ class Program
 
                     if (userInput.ToLower() == "attack")
                     {
-
-                        if (player.GetWeapon() == "Magma Sear Blade")
-                        {
-
                         Console.Clear();
                         LoadingVisual();
                         if (player.GetWeapon() == "Magma Sear Blade") {
@@ -406,18 +403,6 @@ class Program
                             isPlayersTurn=false;
                             break;
                         }
-
-                        if (player.GetWeapon() == "Bogreaper Scythe")
-                        {
-                            Console.WriteLine("");
-                        }
-                        if (player.GetWeapon() == "Glacial Embrace Blade")
-                        {
-
-                        }
-                        if (player.GetWeapon() == "Windshard Longbow")
-                        {
-
                         else if (player.GetWeapon() == "Bogreaper Scythe") {
                             Console.WriteLine($"You Bog Sliced {bossName}");
                             Thread.Sleep(500);
@@ -435,7 +420,6 @@ class Program
                             Thread.Sleep(5000);
                             isPlayersTurn=false;
                             break;
-
                         }
                     }
                     else if (userInput.ToLower() == "potions")
