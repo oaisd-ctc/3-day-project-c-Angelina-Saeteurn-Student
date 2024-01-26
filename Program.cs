@@ -106,11 +106,17 @@ class Program
                             }
 
 
+                           
                             if (userInput.ToLower() == "back")
                             {
-                                // LoadingVisual();
-                                Console.Clear();
                                 break;
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                NotValidResponseMessage();
+                                LoadingVisual();
+                                continue;
                             }
                         }
 
@@ -161,17 +167,7 @@ class Program
                             }
 
                         }
-                        else if (userInput.ToLower() == "back")
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            NotValidResponseMessage();
-                            LoadingVisual();
-                            continue;
-                        }
+
                     }
                     if (userInput.ToLower() == "back")
                     {
