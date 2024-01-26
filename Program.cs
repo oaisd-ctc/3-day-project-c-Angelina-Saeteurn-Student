@@ -1,4 +1,5 @@
 ﻿
+using Enemies;
 using Items;
 
 
@@ -16,22 +17,17 @@ class Program
 
         string playerName = Console.ReadLine();
         Player player = CreatePlayer(background, playerName);
-
         // Thread.Sleep(300);
+        System.Console.WriteLine("Here's your character's background:");
         GenerateBackground();
-
         System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-
         Console.ReadKey();
         System.Console.WriteLine("");
         // LoadingVisual();
         Console.Clear();
 
-
-
         while (userInput != "quit")
         {
-
 
             System.Console.WriteLine("Enter: Info, Fight, or Quit");
             userInput = Console.ReadLine();
@@ -163,9 +159,9 @@ class Program
 
             if (userInput.ToLower() == "fight")
             {
-                Enemy bossOne = new Enemy("BOSS ONE", 100, 20, 40, true, "Location");
-                Enemy bossTwo = new Enemy("BOSS TWO", 100, 20, 40, true, "Location");
-                Enemy bossThree = new Enemy("BOSS THREE", 100, 20, 40, true, "Location");
+                Boss1 bossOne = new Boss1("BOSS ONE", 100, 20, 40, true, "Location");
+                Boss2 bossTwo = new Boss2("BOSS TWO", 100, 20, 40, true, "Location");
+                Boss3 bossThree = new Boss3("BOSS THREE", 100, 20, 40, true, "Location");
 
 
                 Console.Clear();
@@ -210,7 +206,7 @@ class Program
             break;
         }
     }
-
+  
     public static Player CreatePlayer(string background, string playerName)
     {
 
@@ -342,6 +338,7 @@ class Program
         System.Console.WriteLine("NOT A VALID RESPONSE.");
         // LoadingVisual();
     }
+
     public static void LoadingVisual()
     {
         int loadingPauseTime = 400;
@@ -366,7 +363,68 @@ class Program
             Console.WriteLine($"BOSS : {chosenBoss}");
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("\n>>ATTACK \n>>INVENTORY \n>>RUN AWAY");
+            Console.WriteLine("\n>>ATTACK \n>>POTIONS \n>>RUN AWAY");
+            userInput = Console.ReadLine();
+
+            if (userInput.ToLower() == "attack")
+            {
+
+            }
+            else if (userInput.ToLower() == "potions")
+            {
+                Potion[] inventory = player.GetInventory();
+
+                for (int i = 0; i != 5; i++)
+                {
+                    Console.WriteLine($"{i++} - {inventory[i]}");
+                }
+
+
+                Console.WriteLine("CHOOSE NUMBER OR BACK");
+                userInput = Console.ReadLine();
+
+
+                if (userInput.ToLower() == "1")
+                {
+                    Potion one = inventory[0];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "2")
+                {
+                    Potion two = inventory[1];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "3")
+                {
+                    Potion three = inventory[2];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "4")
+                {
+                    Potion four = inventory[3];
+                    //add function to use
+                }
+                if (userInput.ToLower() == "5")
+                {
+                    Potion five = inventory[4];
+                    //add function to use
+                }
+
+            }
+            
+            else if (userInput.ToLower() == "run away")
+            {
+
+                Console.Clear();
+                Console.WriteLine("Are you sure?");
+                userInput = Console.ReadLine();
+
+                if (userInput.ToLower() == "yes")
+                {
+                    break;
+                }
+                else { }
+            }
         }
     }
 

@@ -4,17 +4,16 @@ public class Player
 
     private int health;
     private string name;
-    private Item weapon;
-    private Item[] inventory = new Item[4];
+    private Weapon weapon;
+    private Potion[] inventory = new Potion[4];
 
-    public Player(string name, Item startingPotion, Item weapon)
+    public Player(string name, Potion startingPotion, Weapon weapon)
     {
         this.name = name;
         this.weapon = weapon;
         health = 100;
 
-        inventory[0] = weapon;
-        inventory[1] = startingPotion;
+        inventory[0] = startingPotion;
     }
 
     public void SetName(string newName)
@@ -30,6 +29,14 @@ public class Player
     public void SetHealth(int addHealth)
     {
         health += addHealth;
+    }
+
+    public Weapon GetWeapon() {
+        return weapon;
+    }
+
+    public Potion[] GetInventory() {
+        return inventory;
     }
 
 }
