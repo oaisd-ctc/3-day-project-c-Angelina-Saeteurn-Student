@@ -33,6 +33,19 @@ class Program
             userInput = Console.ReadLine();
             // LoadingVisual();
             System.Console.Clear();
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (userInput.ToLower() == "info")
             {
 
@@ -44,117 +57,130 @@ class Program
 
                     if (userInput.ToLower() == "player info" || userInput.ToLower() == "player" || userInput.ToLower() == "player ")
                     {
-
-                        // LoadingVisual();
-                        System.Console.Clear();
-
-                        System.Console.WriteLine("Enter: Health, Strength, or Back");
-                        userInput = Console.ReadLine();
-
-                        // LoadingVisual();
-                        System.Console.Clear();
-
-                        if (userInput.ToLower() == "health")
+                        while (true)
                         {
-                            System.Console.WriteLine("Your current health is: ");
-                            System.Console.WriteLine("Press any button to go back.");
-                            Console.ReadKey();
-                            userInput = "player info";
-                            continue;
+                            // LoadingVisual();
+                            System.Console.Clear();
 
-
-                        }
-
-                        else if (userInput.ToLower() == "strength")
-                        {
-                            System.Console.WriteLine("Your current strength is:");
-                            System.Console.WriteLine("Enter Back to go back");
+                            System.Console.WriteLine("Enter: Health, Strength, or Back");
                             userInput = Console.ReadLine();
-                            continue;
+
+                            // LoadingVisual();
+                            System.Console.Clear();
+
+                            if (userInput.ToLower() == "health")
+                            {
+                                System.Console.WriteLine("Your current health is: ");
+                                System.Console.WriteLine("Press any button to go back.");
+                                Console.ReadKey();
+                                userInput = "player info";
+                                continue;
+
+
+                            }
+
+                            else if (userInput.ToLower() == "strength")
+                            {
+                                System.Console.WriteLine("Your current strength is:");
+                                System.Console.WriteLine("Enter Back to go back");
+                                userInput = Console.ReadLine();
+                                continue;
+                            }
+
+                            else if (userInput.ToLower() == "back")
+                            {
+                                userInput = "info";
+                                break;
+                            }
+                            else if (userInput.ToLower() == "back")
+                            {
+                                // LoadingVisual();
+                                Console.Clear();
+                                break;
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("NOT A VALID INPUT.");
+                                System.Console.WriteLine("Enter: Health, Strength, or Back");
+                                userInput = Console.ReadLine();
+                            }
+
+
+                            if (userInput.ToLower() == "back")
+                            {
+                                // LoadingVisual();
+                                Console.Clear();
+                                break;
+                            }
                         }
 
+
+                        if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
+                        {
+                            while (true)
+                            {
+                                // Thread.Sleep(500);
+                                Console.Clear();
+                                System.Console.WriteLine("Enter: Bosses Found, Bosses Beaten, back, or Quit.");
+                                userInput = Console.ReadLine();
+
+                                if (userInput.ToLower() == "bosses found" || userInput.ToLower() == "found")
+                                {
+                                    System.Console.WriteLine("You have found __ bosses. \n Boss: \n Boss: \n");
+                                    System.Console.WriteLine("Enter Back to go back");
+                                    userInput = Console.ReadLine();
+
+                                }
+                                else if (userInput.ToLower() == "bosses beaten" || userInput.ToLower() == "beaten")
+                                {
+                                    System.Console.WriteLine("You have beaten __ bosses. \n Boss: \n Boss: \n");
+                                    System.Console.WriteLine("Enter Back to go back");
+                                    userInput = Console.ReadLine();
+                                }
+                                else if (userInput.ToLower() == "back")
+                                {
+                                    break;
+                                    Console.Clear();
+                                }
+                                else if (userInput.ToLower() == "quit")
+                                {
+                                    Environment.Exit(0);
+                                }
+                                else
+                                {
+                                    System.Console.WriteLine("Not a valid response\n");
+                                    LoadingVisual();
+
+                                }
+
+                            }
+
+                            if (userInput.ToLower() == "back")
+                            {
+                                continue;
+                            }
+
+                        }
                         else if (userInput.ToLower() == "back")
                         {
-                            userInput = "info";
                             break;
                         }
                         else
                         {
-                            System.Console.WriteLine("NOT A VALID INPUT.");
-                            System.Console.WriteLine("Enter: Health, Strength, or Back");
-                            userInput = Console.ReadLine();
-                        }
-
-                    }
-                    else if (userInput.ToLower() == "back")
-                    {
-                        break;
-                    }
-
-                    if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
-                    {
-                        while (true)
-                        {
-                            // Thread.Sleep(500);
                             Console.Clear();
-                            System.Console.WriteLine("Enter: Bosses Found, Bosses Beaten, back, or Quit.");
-                            userInput = Console.ReadLine();
-
-                            if (userInput.ToLower() == "bosses found" || userInput.ToLower() == "found")
-                            {
-                                System.Console.WriteLine("You have found __ bosses. \n Boss: \n Boss: \n");
-                                System.Console.WriteLine("Enter Back to go back");
-                                userInput = Console.ReadLine();
-
-                            }
-                            else if (userInput.ToLower() == "bosses beaten" || userInput.ToLower() == "beaten")
-                            {
-                                System.Console.WriteLine("You have beaten __ bosses. \n Boss: \n Boss: \n");
-                                System.Console.WriteLine("Enter Back to go back");
-                                userInput = Console.ReadLine();
-                            }
-                            else if (userInput.ToLower() == "back")
-                            {
-                                break;
-                                Console.Clear();
-                            }
-                            else if (userInput.ToLower() == "quit")
-                            {
-                                Environment.Exit(0);
-                            }
-                            else
-                            {
-                                System.Console.WriteLine("Not a valid response\n");
-                                LoadingVisual();
-
-                            }
-
-                        }
-
-                        if (userInput.ToLower() == "back")
-                        {
+                            NotValidResponseMessage();
+                            LoadingVisual();
                             continue;
                         }
-
                     }
-                    else if (userInput.ToLower() == "back")
+                    if (userInput.ToLower() == "back")
                     {
+                        // LoadingVisual();
+                        Console.Clear();
                         break;
                     }
-                    else
-                    {
-                        Console.Clear();
-                        NotValidResponseMessage();
-                        LoadingVisual();
-                        continue;
-                    }
                 }
-                if (userInput.ToLower() == "back")
-                {
-                    // LoadingVisual();
-                    Console.Clear();
-                    continue;
-                }
+
             }
 
             if (userInput.ToLower() == "fight")
@@ -193,6 +219,10 @@ class Program
             {
                 break;
             }
+            else if (userInput.ToLower() == "back")
+            {
+                continue;
+            }
             else
             {
 
@@ -206,7 +236,7 @@ class Program
             break;
         }
     }
-  
+
     public static Player CreatePlayer(string background, string playerName)
     {
 
@@ -411,7 +441,7 @@ class Program
                 }
 
             }
-            
+
             else if (userInput.ToLower() == "run away")
             {
 
