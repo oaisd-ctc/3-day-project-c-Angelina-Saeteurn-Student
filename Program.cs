@@ -9,13 +9,14 @@ class Program
 
     public static void Main(string[] args)
     {
-        string background = GenerateBackground();
+
 
         System.Console.Clear();
         System.Console.WriteLine("Welcome to Realm Rhapsody!");
         System.Console.WriteLine("Please enter your character's name:");
-
         string playerName = Console.ReadLine();
+
+        string background = GenerateBackground();
         Player player = CreatePlayer(background, playerName);
         // Thread.Sleep(300);
         System.Console.WriteLine("Here's your character's background:");
@@ -58,20 +59,18 @@ class Program
                             if (userInput.ToLower() == "health")
                             {
                                 System.Console.WriteLine("Your current health is: ");
-                                System.Console.WriteLine("Press any button to go back.");
+                                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                                 Console.ReadKey();
-                                userInput = "player info";
-                                continue;
+                                Console.Clear();
 
                             }
 
                             else if (userInput.ToLower() == "strength")
                             {
                                 System.Console.WriteLine("Your current strength is: ");
-                                System.Console.WriteLine("Press any button to go back.");
+                                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                                 Console.ReadKey();
-                                userInput = "player info";
-                                continue;
+                                Console.Clear();
                             }
 
                             else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
@@ -95,73 +94,74 @@ class Program
 
 
 
-                            if (userInput.ToLower() == "back")
+
+                        }
+
+                        if (userInput.ToLower() == "back")
+                        {
+                            break;
+                        }
+
+                        else
+                        {
+                            Console.Clear();
+                            NotValidResponseMessage();
+                            LoadingVisual();
+                            continue;
+                        }
+
+
+                    }
+
+                    if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
+                    {
+                        while (true)
+                        {
+                            // Thread.Sleep(500);
+                            Console.Clear();
+                            System.Console.WriteLine("Enter: Bosses Found, Bosses Beaten, back, or Quit.");
+                            userInput = Console.ReadLine();
+
+                            if (userInput.ToLower() == "bosses found" || userInput.ToLower() == "found")
                             {
+                                System.Console.WriteLine("You have found __ bosses. \n Boss: \n Boss: \n");
+                                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                                Console.ReadKey();
+                                Console.Clear();
+
+                            }
+                            else if (userInput.ToLower() == "bosses beaten" || userInput.ToLower() == "beaten")
+                            {
+                                System.Console.WriteLine("You have beaten __ bosses. \n Boss: \n Boss: \n");
+                                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                                Console.ReadKey();
+                                Console.Clear();
+                            }
+                            else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
+                            {
+                                Console.Clear();
                                 break;
                             }
-
+                            else if (userInput.ToLower() == "quit")
+                            {
+                                Environment.Exit(0);
+                            }
                             else
                             {
-                                Console.Clear();
-                                NotValidResponseMessage();
+                                System.Console.WriteLine("Not a valid response\n");
                                 LoadingVisual();
-                                continue;
+
                             }
+
                         }
 
-
-                        if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
+                        if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                         {
-                            while (true)
-                            {
-                                // Thread.Sleep(500);
-                                Console.Clear();
-                                System.Console.WriteLine("Enter: Bosses Found, Bosses Beaten, back, or Quit.");
-                                userInput = Console.ReadLine();
-
-                                if (userInput.ToLower() == "bosses found" || userInput.ToLower() == "found")
-                                {
-                                    System.Console.WriteLine("You have found __ bosses. \n Boss: \n Boss: \n");
-                                    System.Console.WriteLine("Enter Back to go back");
-                                    userInput = Console.ReadLine();
-
-                                }
-                                else if (userInput.ToLower() == "bosses beaten" || userInput.ToLower() == "beaten")
-                                {
-                                    System.Console.WriteLine("You have beaten __ bosses. \n Boss: \n Boss: \n");
-                                    System.Console.WriteLine("Enter Back to go back");
-                                    userInput = Console.ReadLine();
-                                }
-                                else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
-                                {
-                                    break;
-                                    Console.Clear();
-                                }
-                                else if (userInput.ToLower() == "quit")
-                                {
-                                    Environment.Exit(0);
-                                }
-                                else
-                                {
-                                    System.Console.WriteLine("Not a valid response\n");
-                                    LoadingVisual();
-
-                                }
-
-                            }
-
-                            if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
-                            {
-                                continue;
-                            }
-
+                            continue;
                         }
 
                     }
-                    if (userInput.ToLower() == "boss")
-                    {
 
-                    }
                     if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                     {
                         // LoadingVisual();
@@ -189,6 +189,7 @@ class Program
                 Console.Clear();
                 Console.WriteLine("BOSS 1, 2, 3 OR BACK");
                 userInput = Console.ReadLine();
+                Console.Clear();
 
                 if (userInput.ToLower() == "1")
                 {
@@ -255,28 +256,28 @@ class Program
         {
 
             background = "Marsh";
-            Console.WriteLine("Background: \n Within the Marshland, life thrives amidst the ethereal mist and labyrinthine waterways. The air is thick with the heady scent of decay and the symphony of unseen creatures. Wisps of fog weave through twisted mangroves, and the inhabitants, attuned to the swamp's rhythm, move with a quiet grace through the murky depths. The shadowy spires of ancient cypress trees stand sentinel, where secrets are whispered through rustling leaves and the swamp's heart beats with an enigmatic pulse.");
+            Console.WriteLine("Background:\nWithin the Marshland, life thrives amidst the ethereal mist and labyrinthine waterways. The air is thick with the heady scent of decay and the symphony of unseen creatures.\nWisps of fog weave through twisted mangroves, and the inhabitants, attuned to the swamp's rhythm, move with a quiet grace through the murky depths.\nThe shadowy spires of ancient cypress trees stand sentinel, where secrets are whispered through rustling leaves and the swamp's heart beats with an enigmatic pulse.");
 
         }
 
         else if (randomBackground == 2)
         {
             background = "Lava";
-            Console.WriteLine("Background: \nAmidst the Volcanic land of Alchemy, existence is a dance within the radiant warmth and ancient mystique. Luminescent energies pulsate through the air, casting a perpetual glow upon the inhabitants who navigate the incandescent pathways of this scorching realm. The towering pyro-spires stand as testament to the mastery of elemental forces, where each heartbeat resonates with the untamed vitality of the living flames.");
+            Console.WriteLine("Background:\nAmidst the Volcanic land of Alchemy, existence is a dance within the radiant warmth and ancient mystique.\nLuminescent energies pulsate through the air, casting a perpetual glow upon the inhabitants who navigate the incandescent pathways of this scorching realm.\nThe towering pyro-spires stand as testament to the mastery of elemental forces, where each heartbeat resonates with the untamed vitality of the living flames.");
 
         }
 
         else if (randomBackground == 3)
         {
             background = "Snow";
-            Console.WriteLine("Background: \nIn the frozen solitude of the Glacial Citadel, life unfolds amidst shimmering ice and ancient enchantments. Wisps of frost weave through the air as the inhabitants, attuned to the icy symphony, navigate crystalline corridors. The wizard's tower, a spire of enchanted ice, stands sentinel against the relentless chill, where every breath feels like a whispered incantation. \n ");
+            Console.WriteLine("Background:\nIn the frozen solitude of the Glacial Citadel, life unfolds amidst shimmering ice and ancient enchantments.\nWisps of frost weave through the air as the inhabitants, attuned to the icy symphony, navigate crystalline corridors.\nThe wizard's tower, a spire of enchanted ice, stands sentinel against the relentless chill, where every breath feels like a whispered incantation.");
 
         }
 
         else if (randomBackground == 4)
         {
             background = "Plains";
-            Console.WriteLine("In the vast expanse of the Dreamweaver Plains, where golden sunlight bathes the rolling hills, a hidden Apothecary Dell is a sanctuary for healers and seekers alike. Amidst the sea of swaying grasses and vibrant wildflowers, a mystical Well of Vitality emerges. Legends speak of the wellspring's magical waters, enriched by the purity of the meadow's essence.");
+            Console.WriteLine("Background:\nIn the vast expanse of the Dreamweaver Plains, where golden sunlight bathes the rolling hills, a hidden Apothecary Dell is a sanctuary for healers and seekers alike.\nAmidst the sea of swaying grasses and vibrant wildflowers, a mystical Well of Vitality emerges.\nLegends speak of the wellspring's magical waters, enriched by the purity of the meadow's essence.");
         }
 
         return background;
@@ -292,7 +293,7 @@ class Program
         //CHANGE POTION NAME AND DESCRIPTION VARIABLES IN EVERY OUTCOME
         if (background == "Lava")
         {
-            
+
         }
 
         else if (background == "Marsh")
@@ -392,14 +393,31 @@ class Program
 
                     if (userInput.ToLower() == "attack")
                     {
+
+                        if (player.GetWeapon() == "Magma Sear Blade")
+                        {
+
                         Console.Clear();
                         LoadingVisual();
                         if (player.GetWeapon() == "Magma Sear Blade") {
+
                             Console.WriteLine($"You sear slashed {bossName}!");
                             Thread.Sleep(500);
                             isPlayersTurn=false;
                             break;
                         }
+
+                        if (player.GetWeapon() == "Bogreaper Scythe")
+                        {
+                            Console.WriteLine("");
+                        }
+                        if (player.GetWeapon() == "Glacial Embrace Blade")
+                        {
+
+                        }
+                        if (player.GetWeapon() == "Windshard Longbow")
+                        {
+
                         else if (player.GetWeapon() == "Bogreaper Scythe") {
                             Console.WriteLine($"You Bog Sliced {bossName}");
                             Thread.Sleep(500);
@@ -417,6 +435,7 @@ class Program
                             Thread.Sleep(5000);
                             isPlayersTurn=false;
                             break;
+
                         }
                     }
                     else if (userInput.ToLower() == "potions")
@@ -477,6 +496,8 @@ class Program
                         else { }
                     }
                 }
+
+
                 while (isPlayersTurn == false) {
                     Console.Clear();
                     LoadingVisual();
