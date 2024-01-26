@@ -26,6 +26,10 @@ public class Player
         name = newName;
     }
 
+    public string GetName() {
+        return name;
+    }
+
     public int GetHealth()
     {
         return health;
@@ -36,8 +40,8 @@ public class Player
         health += addHealth;
     }
 
-    public Weapon GetWeapon() {
-        return weapon;
+    public string GetWeapon() {
+        return weapon.GetItemName();
     }
 
     public Potion[] GetInventory() {

@@ -106,7 +106,7 @@ class Program
                             }
 
 
-                           
+
                             if (userInput.ToLower() == "back")
                             {
                                 break;
@@ -192,17 +192,17 @@ class Program
 
                 if (userInput.ToLower() == "1")
                 {
-                    FightLoop(player, bossOne);
+                    FightLoop(player, bossOne, bossOne.GetName(), player.GetName());
                 }
 
-                else if (userInput.ToLower() == "1")
+                else if (userInput.ToLower() == "2")
                 {
-                    FightLoop(player, bossTwo);
+                    FightLoop(player, bossTwo, bossTwo.GetName(), player.GetName());
                 }
 
-                else if (userInput.ToLower() == "1")
+                else if (userInput.ToLower() == "3")
                 {
-                    FightLoop(player, bossThree);
+                    FightLoop(player, bossThree, bossThree.GetName(), player.GetName());
                 }
 
                 else if (userInput.ToLower() == "back")
@@ -336,24 +336,28 @@ class Program
 
 
         //CHANGE WEAPON NAME AND DESCRIPTION VARIABLES IN EVERY OUTCOME
-        if (background == "")
+        if (background == "Lava")
         {
-            //BACKGROUND ONE WEAPON
+            Weapon magmaSearBlade = new Weapon("Magma Sear Blade", "");
+            weapon = magmaSearBlade;
         }
 
-        else if (background == "")
+        else if (background == "Marsh")
         {
-            //BACKGROUND TWO WEAPON
+            Weapon bogreaperScythe = new Weapon("Bogreaper Scythe", "");
+            weapon = bogreaperScythe;
         }
 
-        else if (background == "")
+        else if (background == "Snow")
         {
-            //BACKGROUND THREE WEAPON
+            Weapon glacialEmbraceBlade = new Weapon("Glacial Embrace Blade", "");
+            weapon = glacialEmbraceBlade;
         }
 
-        else if (background == "")
+        else if (background == "Plains")
         {
-            //BACKGROUND FOUR WEAPON
+            Weapon windshardLongbow = new Weapon("Windshard Longbow", "");
+            weapon = windshardLongbow;
         }
 
         return weapon;
@@ -380,77 +384,102 @@ class Program
 
     }
 
-    public static void FightLoop(Player player, Enemy chosenBoss)
+    public static void FightLoop(Player player, Enemy chosenBoss, string bossName, string playerName)
     {
+        bool isPlayersTurn = true;
+
         while (true)
         {
-            Console.Clear();
-            Console.WriteLine($"HEALTH : {player.GetHealth()}");
-            Console.WriteLine($"BOSS : {chosenBoss}");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("\n>>ATTACK \n>>POTIONS \n>>RUN AWAY");
-            userInput = Console.ReadLine();
-
-            if (userInput.ToLower() == "attack")
+            if (chosenBoss.GetHealth() > 0)
             {
-                
-            }
-            else if (userInput.ToLower() == "potions")
-            {
-                Potion[] inventory = player.GetInventory();
-
-                Console.WriteLine();
-                for (int i = 0; i < 5; i++)
+                while (isPlayersTurn)
                 {
-                    Console.WriteLine($"{i+1} - {inventory[i].GetItemName()}");
-                }
+                    Console.Clear();
+                    Console.WriteLine($"{playerName} VS {bossName}");
+                    Console.WriteLine();
+                    Console.WriteLine($"HEALTH : {player.GetHealth()}");
+                    Console.WriteLine($"BOSS : {bossName}");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("\n>>ATTACK \n>>POTIONS \n>>RUN AWAY");
+                    userInput = Console.ReadLine();
 
-                Console.WriteLine();
-                Console.WriteLine("CHOOSE NUMBER OR BACK");
-                userInput = Console.ReadLine();
+                    if (userInput.ToLower() == "attack")
+                    {
+                        if (player.GetWeapon() == "Magma Sear Blade") {
+                            Console.WriteLine($"You sear slashed {bossName}!");
+                        }
+                        if (player.GetWeapon() == "Bogreaper Scythe") {
+                            Console.WriteLine("");
+                        }
+                        if (player.GetWeapon() == "Glacial Embrace Blade") {
+                            
+                        }
+                        if (player.GetWeapon() == "Windshard Longbow") {
+                            
+                        }
+                    }
+                    else if (userInput.ToLower() == "potions")
+                    {
+                        Potion[] inventory = player.GetInventory();
+
+                        Console.WriteLine();
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Console.WriteLine($"{i + 1} - {inventory[i].GetItemName()}");
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine("CHOOSE NUMBER OR BACK");
+                        userInput = Console.ReadLine();
 
 
-                if (userInput.ToLower() == "1")
-                {
-                    Potion one = inventory[0];
-                    //add function to use
-                }
-                if (userInput.ToLower() == "2")
-                {
-                    Potion two = inventory[1];
-                    //add function to use
-                }
-                if (userInput.ToLower() == "3")
-                {
-                    Potion three = inventory[2];
-                    //add function to use
-                }
-                if (userInput.ToLower() == "4")
-                {
-                    Potion four = inventory[3];
-                    //add function to use
-                }
-                if (userInput.ToLower() == "5")
-                {
-                    Potion five = inventory[4];
-                    //add function to use
-                }
+                        if (userInput.ToLower() == "1")
+                        {
+                            Potion one = inventory[0];
+                            //add function to use
+                        }
+                        if (userInput.ToLower() == "2")
+                        {
+                            Potion two = inventory[1];
+                            //add function to use
+                        }
+                        if (userInput.ToLower() == "3")
+                        {
+                            Potion three = inventory[2];
+                            //add function to use
+                        }
+                        if (userInput.ToLower() == "4")
+                        {
+                            Potion four = inventory[3];
+                            //add function to use
+                        }
+                        if (userInput.ToLower() == "5")
+                        {
+                            Potion five = inventory[4];
+                            //add function to use
+                        }
 
-            }
+                    }
 
-            else if (userInput.ToLower() == "run away")
-            {
+                    else if (userInput.ToLower() == "run away")
+                    {
 
-                Console.Clear();
-                Console.WriteLine("Are you sure?");
-                userInput = Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("Are you sure?");
+                        userInput = Console.ReadLine();
 
-                if (userInput.ToLower() == "yes")
-                {
-                    break;
+                        if (userInput.ToLower() == "yes")
+                        {
+                            Console.WriteLine();
+                            break;
+                        }
+                        else { }
+                    }
                 }
-                else { }
+                while (isPlayersTurn == false) {
+
+                }
             }
         }
     }
