@@ -160,9 +160,9 @@ class Program
 
             if (userInput.ToLower() == "fight")
             {
-                Boss1 bossOne = new Boss1("BOSS ONE", 100, 20, 40, true, "Location");
-                Boss2 bossTwo = new Boss2("BOSS TWO", 100, 20, 40, true, "Location");
-                Boss3 bossThree = new Boss3("BOSS THREE", 100, 20, 40, true, "Location");
+                Boss1 bossOne = new Boss1("The Frugal Financier, Aedan the Penny-Pinching Tycoon", 100, 1, 21, true, "The Limosa Umbra Sanctum, in the Marshland");
+                Boss2 bossTwo = new Boss2("The Enigmatic Soverign, Mister Luyk the Arcane Luminary", 100, 5, 31, true, "Frostweave Spire, in the Arctic Freeze");
+                Boss3 bossThree = new Boss3("The Infernal Warlord, Emannuel The Scorched Conquerer", 100, 10, 41, true, "The Eternal Caldera, in the Vocanic Lands");
 
 
                 Console.Clear();

@@ -20,9 +20,26 @@ namespace Enemies{
             this.enemyLocation = enemyLocation;
         }
 
-        public virtual void Attack()
+        public virtual int Attack()
         {
-            
+            Random Ran = new Random();
+            int damage = Ran.Next(minDamage,maxDamage);
+            if (damage==5){
+                Console.WriteLine($"It's time for box breathing. Inhale....... hold it........ (He doesn't say anything else, you're forced to hold it you take {damage} damage)");
+            }
+            else if(damage<=5){
+                Console.WriteLine($"you typed you password in wrong he marks you tardy you take {damage} emotional damage.");
+            }
+            else if(damage<=20){
+                Console.WriteLine($"It was going to be a snow day but he summons a fire ball melting the snow, Dude my snow day!? You take {damage} damage.");
+            }
+            else if(damage<40){
+                Console.WriteLine($"Is he pulling out a flamethrower? lskdklsdflskdf;lsdfksdlfj'klf';klsfd (Kentucky Fried Player... you take {damage} Damage)");
+            }
+            else if(damage==40){
+                Console.WriteLine($"He holds out a piece of paper, ITS YOUR TEST, IT HAS AN F ON IT you failed you test :( you take {damage} damage");
+            }
+            return damage;
         }
 
         public virtual void Action2()
@@ -35,9 +52,9 @@ namespace Enemies{
             return health;
         }
 
-        public int SetHealth()
+        public int SetHealth(int damage)
         {
-            return health;
+            return health - damage;
         }
             public string GetName()
         {
