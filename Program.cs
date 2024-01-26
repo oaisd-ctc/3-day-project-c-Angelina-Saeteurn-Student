@@ -393,10 +393,20 @@ class Program
 
                     if (userInput.ToLower() == "attack")
                     {
+
                         if (player.GetWeapon() == "Magma Sear Blade")
                         {
+
+                        Console.Clear();
+                        LoadingVisual();
+                        if (player.GetWeapon() == "Magma Sear Blade") {
+
                             Console.WriteLine($"You sear slashed {bossName}!");
+                            Thread.Sleep(500);
+                            isPlayersTurn=false;
+                            break;
                         }
+
                         if (player.GetWeapon() == "Bogreaper Scythe")
                         {
                             Console.WriteLine("");
@@ -407,6 +417,24 @@ class Program
                         }
                         if (player.GetWeapon() == "Windshard Longbow")
                         {
+
+                        else if (player.GetWeapon() == "Bogreaper Scythe") {
+                            Console.WriteLine($"You Bog Sliced {bossName}");
+                            Thread.Sleep(500);
+                            isPlayersTurn=false;
+                            break;
+                        }
+                        else if (player.GetWeapon() == "Glacial Embrace Blade") {
+                            Console.WriteLine($"You Glacial Sliced {bossName}");
+                            Thread.Sleep(500);
+                            isPlayersTurn=false;
+                            break;
+                        }
+                        else if (player.GetWeapon() == "Windshard Longbow") {
+                            Console.WriteLine($"You Windshard bowed {bossName}!");
+                            Thread.Sleep(5000);
+                            isPlayersTurn=false;
+                            break;
 
                         }
                     }
@@ -468,9 +496,15 @@ class Program
                         else { }
                     }
                 }
-                while (isPlayersTurn == false)
-                {
 
+
+                while (isPlayersTurn == false) {
+                    Console.Clear();
+                    LoadingVisual();
+                    chosenBoss.Attack();
+                    Thread.Sleep(6000);
+                    isPlayersTurn=true;
+                    
                 }
             }
         }

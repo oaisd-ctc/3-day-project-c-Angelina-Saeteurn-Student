@@ -21,6 +21,7 @@ namespace Enemies{
 
         public virtual int Attack()
         {
+            Console.WriteLine("hello");
             return 0;
         }
 
