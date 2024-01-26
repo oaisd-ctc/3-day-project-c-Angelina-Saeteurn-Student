@@ -332,7 +332,7 @@ class Program
     {
         string weaponName = "NONE";
         string weaponDescription = "NONE";
-        Weapon weapon = new Weapon(weaponName, weaponDescription);
+        Weapon weapon = new Weapon(weaponName, weaponDescription, 10, 20);
 
 
         //CHANGE WEAPON NAME AND DESCRIPTION VARIABLES IN EVERY OUTCOME
@@ -394,18 +394,19 @@ class Program
 
             if (userInput.ToLower() == "attack")
             {
-
+                
             }
             else if (userInput.ToLower() == "potions")
             {
                 Potion[] inventory = player.GetInventory();
 
-                for (int i = 0; i != 5; i++)
+                Console.WriteLine();
+                for (int i = 0; i < 5; i++)
                 {
-                    Console.WriteLine($"{i++} - {inventory[i]}");
+                    Console.WriteLine($"{i+1} - {inventory[i].GetItemName()}");
                 }
 
-
+                Console.WriteLine();
                 Console.WriteLine("CHOOSE NUMBER OR BACK");
                 userInput = Console.ReadLine();
 
