@@ -30,6 +30,13 @@ namespace Items {
 
         bossHealth -= attackDamage;
     }
+    
+    public string getDamageRange()
+    {
+        string damageRange = minimumDamage + " " + maximumDamage;
+        return damageRange;
+    }
+
 
 
     }
