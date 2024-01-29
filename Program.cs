@@ -38,12 +38,12 @@ class Program
         while (userInput != "quit")
         {
 
-            System.Console.WriteLine("Your current choices are: check Info, Fight, or Quit");
+            System.Console.WriteLine("Your current choices are: Check game Info, Fight a boss, or Quit");
             userInput = Console.ReadLine();
             Thread.Sleep(200);
             System.Console.Clear();
 
-            if (userInput.ToLower() == "info" || userInput.ToLower() == "check info" || userInput.ToLower() == "check" || userInput.ToLower() == "check ")
+            if (userInput.ToLower() == "info" || userInput.ToLower() == "check info" || userInput.ToLower() == "check" || userInput.ToLower() == "check "|| userInput.ToLower() == "check " || userInput.ToLower() == "check ")
             {
                 System.Console.WriteLine("");
                 Console.Clear();
@@ -132,7 +132,7 @@ class Program
 
 
                 Console.Clear();
-                Console.WriteLine("Which level boss do you want to fight?\n 1. Easy\n2. Medium\n 3. Hard");
+                Console.WriteLine("Which level boss do you want to fight?\n1. Easy\n2. Medium\n3. Hard\n\nOr Back");
                 userInput = Console.ReadLine();
                 Console.Clear();
 
@@ -787,7 +787,7 @@ class Program
 
                     }
 
-                    else if (userInput == "2")
+                    else if (userInput == "2" || userInput.ToLower() == "h" || userInput.ToLower() == "heal")
                     {
                         Console.WriteLine("You heal " + healAmount + " health.");
 
@@ -806,7 +806,27 @@ class Program
                         isPlayersTurn = false;
 
                     }
-                    else if (userInput == "1")
+                    if (playerHealth <= 0)
+                    {
+                        LoadingVisual();
+                        System.Console.WriteLine("YOU DIED\n\nGAME OVER");
+                        System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                        Console.ReadKey();
+                        Environment.Exit(0);
+                    }
+                    if (boss3Health <= 0)
+                            {
+                                LoadingVisual();
+                                System.Console.WriteLine("You Killed " + bossName + "!!!");
+                                System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Godly!\nYour Heal amount is now 1,000,000!");
+                                healAmount = 1000000;
+                                playerStrength = "Godly";
+                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                                Console.ReadKey();
+                                LoadingVisual();
+                                break;
+                            }
+                    else if (userInput == "1" || userInput.ToLower() == "a" || userInput.ToLower() == "attack")
                     {
                         if (player.GetWeapon() == "Magma Sear Blade")
                         {
@@ -855,25 +875,8 @@ class Program
                                 LoadingVisual();
                                 break;
                             }
-                            if (playerHealth <= 0)
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("YOU DIED\n\nGAME OVER");
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                Environment.Exit(0);
-                            }
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("You Killed " + bossName + "!!!");
-                                System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Godly!\nYour Heal amount is now 1,000,000!");
-                                healAmount = 1000000;
-                                playerStrength = "Godly";
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                LoadingVisual();
-                                break;
-                            }
+
+
                         }
 
                     }
