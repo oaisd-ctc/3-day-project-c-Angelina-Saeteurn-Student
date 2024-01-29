@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
-namespace Enemies{
+namespace Enemies
+{
     public class Boss1 : Enemy
     {
         public string name;
@@ -14,8 +15,8 @@ namespace Enemies{
             //The Frugal Financier, Aedan the Penny-Pinching Tycoon
             this.name = name;
             this.health = health;
-            this.minDamage = minDamage;
-            this.maxDamage = maxDamage;
+            this.minDamage = 1;
+            this.maxDamage = 21;
             this.effectedByPotions = effectedByPotions;
             this.enemyLocation = enemyLocation;
         }
@@ -25,21 +26,29 @@ namespace Enemies{
 
         {
             Random Ran = new Random();
-            int damage = Ran.Next(minDamage,maxDamage);
-            if (damage==1){
-                Console.WriteLine("He takes out a penny, and throws it at you, it lands on top of your head... Ow, you take 1 emotional damage.");
+            
+            int damage = Ran.Next(minDamage, maxDamage);
+
+            if (damage == 1)
+            {
+                Console.WriteLine("He takes out a penny and throws it at you. It lands on top of your head...\n Ow, You take 1 emotional damage.");
+                
             }
-            else if(damage<=5){
-                Console.WriteLine($"He takes a doller bill and rips it in half... why did he do that ... you take {damage} emotional damage.");
+            else if (damage <= 5)
+            {
+                Console.WriteLine($"He takes a dollar bill and rips it in half... why did he do that ...\n You take {damage} emotional damage.");
             }
-            else if(damage<=10){
-                Console.WriteLine($" he shakes a can of Arizona brand Mucho Mango, and it explodes, gross, you take {damage} damage.");
+            else if (damage <= 10)
+            {
+                Console.WriteLine($"He shakes a can of Arizona brand Mucho Mango, and it explodes, gross.\n You take {damage} damage.");
             }
-            else if(damage<20){
-                Console.WriteLine($"he just straight up throws a can at you, it hits you in the head, YEOUCH! You take {damage} damage.");
+            else if (damage <= 21)
+            {
+                Console.WriteLine($"He throws a can at you, it hits you in the head, YEOUCH!\n You take {damage} damage.");
             }
-            else if(damage==20){
-                Console.WriteLine("'You've Mucho-ed your last mango' He takes out a cash gun and KABOOM, You take 20 damage.");
+            else if (damage == 21)
+            {
+                Console.WriteLine("'You've Mucho-ed your last mango' He takes out a cash gun and KABOOM!\n You take 20 damage.");
             }
             return damage;
         }
@@ -58,7 +67,7 @@ namespace Enemies{
         {
             return health;
         }
-            public string GetName()
+        public string GetName()
         {
             return name;
         }

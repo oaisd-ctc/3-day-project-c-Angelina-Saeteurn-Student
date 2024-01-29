@@ -20,6 +20,10 @@ public class Player
         inventory[3] = empty;
         inventory[4] = empty;
     }
+    public void SubtractHealth(int Damage)
+    {
+        health = health - Damage;
+    }
 
     public void SetName(string newName)
     {
