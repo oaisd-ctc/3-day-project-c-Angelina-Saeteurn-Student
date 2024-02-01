@@ -11,7 +11,7 @@ class Program
     public static int healAmount = 20;
     public static string userInput;
     public static int loop = 0;
-    public static string playerStrength = "Weak";
+    public static string playerStrength = "weak";
 
     public static void Main(string[] args)
     {
@@ -37,43 +37,52 @@ class Program
 
         while (userInput != "quit")
         {
-
-            System.Console.WriteLine("Your current choices are: Check game Info, Fight a boss, or Quit");
-            userInput = Console.ReadLine();
-            Thread.Sleep(200);
-            System.Console.Clear();
-
-            if (userInput.ToLower() == "info" || userInput.ToLower() == "check info" || userInput.ToLower() == "check" || userInput.ToLower() == "check "|| userInput.ToLower() == "check " || userInput.ToLower() == "check ")
+            while (true)
             {
-                System.Console.WriteLine("");
-                Console.Clear();
-                System.Console.WriteLine("Enter: Player info, Boss info, or Back.");
+                System.Console.WriteLine("Your current choices are:\n1. Check game Info\n2. Fight a boss\n3. Quit");
                 userInput = Console.ReadLine();
+                Thread.Sleep(200);
+                System.Console.Clear();
 
-                if (userInput.ToLower() == "player info" || userInput.ToLower() == "player" || userInput.ToLower() == "player ")
+                if (userInput.ToLower() == "quit" || userInput.ToLower() == "3 " || userInput.ToLower() == "3")
                 {
-
-                    System.Console.Clear();
-                    System.Console.WriteLine("Your current health is: " + playerHealth);
-                    System.Console.WriteLine("Your current Heal amount is: " + healAmount);
-                    Console.WriteLine("Your current strength is: " + playerStrength);
-                    System.Console.WriteLine("\nPRESS ANY KEY TO GO BACK");
-                    Console.ReadKey();
-                    LoadingVisual();
-                    continue;
-
-                }
-
-                if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
-                {
-                    while (true)
+                    System.Console.WriteLine("Are you sure?\nYes/No");
+                    userInput = Console.ReadLine();
+                    if (userInput == "y" || userInput.ToLower() == "yes" || userInput.ToLower() == "yes ")
                     {
-
-                        // Thread.Sleep(500);
                         Console.Clear();
+                        Environment.Exit(0);
+                    }
+                    Console.Clear();
+                }
+                else if (userInput.ToLower() == "info" || userInput.ToLower() == "check info" || userInput.ToLower() == "check" || userInput.ToLower() == "check " || userInput.ToLower() == "check " || userInput.ToLower() == "check " || userInput.ToLower() == "1 " || userInput.ToLower() == "1")
+                {
+                    System.Console.WriteLine("");
+                    Console.Clear();
+                    while (userInput.ToLower() != "back" || userInput.ToLower() != "3 " || userInput.ToLower() != "3")
+                    {
+                        System.Console.WriteLine("Enter:\n1. Player info\n2. Boss info\n3. Back.");
+                        userInput = Console.ReadLine();
 
-                        if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
+
+                        if (userInput.ToLower() == "player info" || userInput.ToLower() == "player" || userInput.ToLower() == "player " || userInput.ToLower() == "1 " || userInput.ToLower() == "1")
                         {
+
+                            System.Console.Clear();
+                            System.Console.WriteLine("Your current health is: " + playerHealth);
+                            System.Console.WriteLine("Your current Heal amount is: " + healAmount);
+                            Console.WriteLine("Your current strength is: " + playerStrength);
+                            System.Console.WriteLine("\nPRESS ANY KEY TO GO BACK");
+                            Console.ReadKey();
+                            LoadingVisual();
+                            continue;
+
+                        }
+
+                        if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss " || userInput.ToLower() == "2 " || userInput.ToLower() == "2")
+                        {
+                            Console.Clear();
+
                             if (boss1Health > 0)
                             {
                                 System.Console.WriteLine("Boss 1 currently has " + boss1Health + " health");
@@ -102,86 +111,104 @@ class Program
                             Console.ReadKey();
                             LoadingVisual();
                             Console.Clear();
-                            break;
-                        }
-                        else if (userInput.ToLower() == "quit")
-                        {
-                            Environment.Exit(0);
-                        }
-                        else
-                        {
-                            System.Console.WriteLine("Not a valid response\n");
-                            LoadingVisual();
+                            continue;
 
+                        }
+
+                        if (userInput.ToLower() == "back" || userInput.ToLower() == "3 " || userInput.ToLower() == "3")
+                        {
+                            Console.Clear();
+                            break;
                         }
                     }
                 }
-                if (userInput.ToLower() == "back")
+
+                else if (userInput.ToLower() == "fight" || userInput.ToLower() == "fight a boss" || userInput.ToLower() == "boss" || userInput.ToLower() == "2 " || userInput.ToLower() == "2")
                 {
-                    Console.Clear();
-                    continue;
+                    Boss1 bossOne = new Boss1("Aedan the Penny-Pinching Tycoon", 80, 1, 21, true, "The Limosa Umbra Sanctum, in the Marshland");
+                    Boss2 bossTwo = new Boss2("Mister Luyk the Arcane Luminary", 100, 10, 36, true, "Frostweave Spire, in the Arctic Freeze");
+                    Boss3 bossThree = new Boss3("Emannuel The Scorched Conquerer", 125, 20, 46, true, "The Eternal Caldera, in the Vocanic Lands");
+
+                    while (true)
+                    {
+                        Console.Clear();
+                        System.Console.WriteLine("Killing bosses will increase your heal amount and strength.\n");
+                        Console.WriteLine("Which level boss do you want to fight?\n1. Easy\n2. Medium\n3. Hard\n\n4. Back\n5. Heal " + healAmount + "\n\nYour health is: " + playerHealth);
+                        userInput = Console.ReadLine();
+                        Console.Clear();
+
+                        if (userInput.ToLower() == "1" || userInput.ToLower() == "easy")
+                        {
+                            FightLoop1(player, bossOne, bossOne.GetName(), player.GetName());
+                        }
+
+                        else if (userInput.ToLower() == "2" || userInput.ToLower() == "Medium")
+                        {
+                            FightLoop2(player, bossTwo, bossTwo.GetName(), player.GetName());
+                        }
+
+                        else if (userInput.ToLower() == "3" || userInput.ToLower() == "hard")
+                        {
+                            FightLoop3(player, bossThree, bossThree.GetName(), player.GetName());
+                        }
+
+                        else if (userInput.ToLower() == "back" || userInput.ToLower() == "4")
+                        {
+                            Console.Clear();
+                            break;
+                        }
+                        else if (userInput.ToLower() == "heal" || userInput.ToLower() == "5")
+                        {
+                            if (playerHealth < 100)
+                            {
+                                Console.WriteLine("You heal " + healAmount + " health.");
+
+                                if (playerHealth + healAmount > 100)
+                                {
+                                    playerHealth = 100;
+                                }
+                                else
+                                {
+                                    playerHealth += healAmount;
+                                }
+
+                                System.Console.WriteLine("\nYour health is now: " + playerHealth);
+                                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                                Console.ReadKey();
+                                LoadingVisual();
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("Your health is already 100.");
+                                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                                Console.ReadKey();
+                                continue;
+                            }
+                        }
+                    }
+
                 }
-
-            }
-
-            if (userInput.ToLower() == "fight")
-            {
-                Boss1 bossOne = new Boss1("Aedan the Penny-Pinching Tycoon", 80, 1, 21, true, "The Limosa Umbra Sanctum, in the Marshland");
-                Boss2 bossTwo = new Boss2("Mister Luyk the Arcane Luminary", 100, 5, 31, true, "Frostweave Spire, in the Arctic Freeze");
-                Boss3 bossThree = new Boss3("Emannuel The Scorched Conquerer", 125, 10, 41, true, "The Eternal Caldera, in the Vocanic Lands");
-
-
-                Console.Clear();
-                Console.WriteLine("Which level boss do you want to fight?\n1. Easy\n2. Medium\n3. Hard\n\nOr Back");
-                userInput = Console.ReadLine();
-                Console.Clear();
-
-                if (userInput.ToLower() == "1" || userInput.ToLower() == "easy")
-                {
-                    FightLoop1(player, bossOne, bossOne.GetName(), player.GetName());
-                }
-
-                else if (userInput.ToLower() == "2" || userInput.ToLower() == "medium")
-                {
-                    FightLoop2(player, bossTwo, bossTwo.GetName(), player.GetName());
-                }
-
-                else if (userInput.ToLower() == "3" || userInput.ToLower() == "hard")
-                {
-                    FightLoop3(player, bossThree, bossThree.GetName(), player.GetName());
-                }
-
                 else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
                 {
                     Console.Clear();
                     continue;
                 }
+                else if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
+                {
+                    continue;
+                }
+                else
+                {
+                    Console.Clear();
+                    NotValidResponseMessage();
+                    LoadingVisual();
+                    Console.Clear();
+                    continue;
+                }
+                Console.Clear();
+                continue;
+            }
 
-            }
-            else if (userInput.ToLower() == "quit")
-            {
-                Console.Clear();
-                break;
-            }
-            else if (userInput.ToLower() == "back" || userInput.ToLower() == "back ")
-            {
-                Console.Clear();
-                continue;
-            }
-            else if (userInput.ToLower() == "boss info" || userInput.ToLower() == "boss" || userInput.ToLower() == "boss ")
-            {
-                continue;
-            }
-            else
-            {
-                Console.Clear();
-                NotValidResponseMessage();
-                LoadingVisual();
-                Console.Clear();
-                continue;
-            }
-            Console.Clear();
-            continue;
         }
     }
 
@@ -327,183 +354,179 @@ class Program
     public static void FightLoop1(Player player, Enemy chosenBoss, string bossName, string playerName)
     {
         bool isPlayersTurn = true;
-
+        if (playerHealth <= 0)
+        {
+            LoadingVisual();
+            System.Console.WriteLine("YOU DIED\n\nGAME OVER");
+            System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
         while (true)
         {
-            if (boss1Health > 0)
+            if (boss1Health <= 0)
             {
-                if (userInput.ToLower() == "yes" || userInput.ToLower() == "y")
-                {
-                    LoadingVisual();
-                    break;
-                }
-                while (isPlayersTurn)
+                LoadingVisual();
+                System.Console.WriteLine(bossName + " is already dead.\n");
+                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                Console.ReadKey();
+                LoadingVisual();
+                break;
+            }
+
+            while (isPlayersTurn)
+            {
+                Console.Clear();
+                Console.WriteLine($"{playerName} VS {bossName}");
+                Console.WriteLine();
+                Console.WriteLine($"BOSS : {bossName}");
+                Console.WriteLine($"BOSS HEALTH : " + boss1Health);
+                Console.WriteLine($"YOUR HEALTH : " + playerHealth);
+                Console.WriteLine("\n\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
+                userInput = Console.ReadLine();
+                LoadingVisual();
+
+                if (userInput == "3" || userInput.ToLower() == "run" || userInput.ToLower() == "run away")
                 {
                     Console.Clear();
-                    Console.WriteLine($"{playerName} VS {bossName}");
-                    Console.WriteLine();
-                    Console.WriteLine($"BOSS : {bossName}");
-                    Console.WriteLine($"BOSS HEALTH : " + boss1Health);
-                    Console.WriteLine($"YOUR HEALTH : " + playerHealth);
-                    Console.WriteLine("\n\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
-                    userInput = Console.ReadLine();
-                    LoadingVisual();
-
-                    if (userInput != "1" && userInput != "2" && userInput != "3")
+                    if (boss1Health != 80)
                     {
-                        Console.WriteLine("That is not an option\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
+                        Console.WriteLine("This will reset the bosses health.\nAre you sure?\n\nYes/No");
                         userInput = Console.ReadLine();
-                        LoadingVisual();
                     }
-                    if (userInput == "3")
-                    {
-
-                        Console.Clear();
-                        Console.WriteLine("Are you sure?\nYes/No");
-                        userInput = Console.ReadLine();
-
-                        if (userInput.ToLower() == "yes" || userInput.ToLower() == "y")
-                        {
-                            Console.Clear();
-                            break;
-
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            continue;
-                        }
-
-                    }
-
-                    else if (userInput == "2")
-                    {
-                        Console.WriteLine("You heal " + healAmount + " health.");
-
-                        if (playerHealth + healAmount > 100)
-                        {
-                            playerHealth = 100;
-                        }
-                        else
-                        {
-                            playerHealth += healAmount;
-                        }
-
-                        System.Console.WriteLine("Your health is now: " + playerHealth);
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-                        isPlayersTurn = false;
-
-                    }
-                    else if (userInput == "1")
-                    {
-                        if (player.GetWeapon() == "Magma Sear Blade")
-                        {
-                            Random randomNum = new Random();
-                            int randomAttack = randomNum.Next(1, 5);
-                            switch (randomAttack)
-                            {
-                                case 1:
-                                    Console.WriteLine("You throw a searing strike!\n This does 15 damage!");
-                                    boss1Health = boss1Health - 25;
-                                    break;
-
-                                case 2:
-                                    Console.WriteLine("You do an Inferno Slash!\n This does 20 damage!");
-                                    boss1Health = boss1Health - 20;
-                                    break;
-
-                                case 3:
-                                    Console.WriteLine("You unleash Volcanic Fury!\n This does 25 damage");
-                                    boss1Health = boss1Health - 25;
-                                    break;
-                                case 4:
-                                    Console.WriteLine($"You sear slashed {bossName}!\n This does 30 damage!");
-                                    boss1Health = boss1Health - 30;
-                                    break;
-                                default:
-                                    Console.WriteLine("You missed");
-                                    break;
-                            }
-                            System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                            Console.ReadKey();
-                            LoadingVisual();
-
-                            isPlayersTurn = false;
-
-                            if (isPlayersTurn = false && boss1Health <= 0)
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("You Killed " + bossName + "!!!");
-                                System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Medium!\nYour Heal amount is now 30!");
-                                healAmount = 30;
-                                playerStrength = "Medium";
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                LoadingVisual();
-                                break;
-                            }
-                            if (playerHealth <= 0)
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("YOU DIED\n\nGAME OVER");
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                Environment.Exit(0);
-                            }
-                        }
-
-                    }
-
-                    if (player.GetWeapon() == "Bogreaper Scythe")
-                    {
-                        Console.WriteLine($"You Bog Sliced {bossName}");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-
-                        isPlayersTurn = false;
-                        break;
-                    }
-                    else if (player.GetWeapon() == "Glacial Embrace Blade")
-                    {
-                        Console.WriteLine($"You Glacial Sliced {bossName}");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-
-                        isPlayersTurn = false;
-                        break;
-                    }
-                    else if (player.GetWeapon() == "Windshard Longbow")
-                    {
-                        Console.WriteLine($"You Windshard bowed {bossName}!");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-                        isPlayersTurn = false;
-                        break;
-                    }
+                    isPlayersTurn = false;
+                    break;
                 }
 
-                if (isPlayersTurn == false)
+                else if (userInput == "2" || userInput.ToLower() == "heal")
                 {
-                    System.Console.WriteLine("Now " + bossName + "'s turn to Attack!");
+                    Console.WriteLine("You heal " + healAmount + " health.");
+
+                    if (playerHealth + healAmount > 100)
+                    {
+                        playerHealth = 100;
+                    }
+                    else
+                    {
+                        playerHealth += healAmount;
+                    }
+
+                    System.Console.WriteLine("Your health is now: " + playerHealth);
                     System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                     Console.ReadKey();
-                    if (boss1Health <= 0)
+                    LoadingVisual();
+                    isPlayersTurn = false;
+                }
+
+                else if (userInput == "1" || userInput.ToLower() == "a" || userInput.ToLower() == "attack")
+                {
+
+                    Random randomNum = new Random();
+                    int randomAttack = randomNum.Next(1, 5);
+                    if (playerStrength == "weak")
+                    {
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 10 damage!");
+                                boss1Health = boss1Health - 10;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 15 damage!");
+                                boss1Health = boss1Health - 15;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 20 damage");
+                                boss1Health = boss1Health - 20;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 25 damage!");
+                                boss1Health = boss1Health - 25;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                    }
+                    if (playerStrength == "Medium")
                     {
 
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 25 damage!");
+                                boss2Health = boss2Health - 20;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 30 damage!");
+                                boss2Health = boss2Health - 25;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 35 damage");
+                                boss2Health = boss2Health - 30;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 40 damage!");
+                                boss2Health = boss2Health - 35;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
                         LoadingVisual();
-                        System.Console.WriteLine("You Killed " + bossName + "!!!");
-                        System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Medium!\nYour Heal amount is now 30!");
-                        healAmount = 30;
-                        playerStrength = "Medium";
-                        System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                    }
+                    if (playerStrength == "Huge")
+                    {
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 30 damage!");
+                                boss3Health = boss3Health - 25;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 35 damage!");
+                                boss3Health = boss3Health - 30;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 40 damage");
+                                boss3Health = boss3Health - 35;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 45 damage!");
+                                boss3Health = boss3Health - 40;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                    }
+                    if (playerStrength == "Godly")
+                    {
+                        Console.WriteLine("You smite him. He is dead.\n\n");
+                        boss3Health = boss3Health - 10000000;
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                         Console.ReadKey();
                         LoadingVisual();
                         break;
                     }
+
+
+
                     if (playerHealth <= 0)
                     {
                         LoadingVisual();
@@ -512,200 +535,234 @@ class Program
                         Console.ReadKey();
                         Environment.Exit(0);
                     }
+
+                }
+                isPlayersTurn = false;
+
+            }
+
+
+            if (isPlayersTurn == false)
+            {
+                if (userInput == "y" || userInput.ToLower() == "yes" || userInput.ToLower() == "yes ")
+                {
+                    boss2Health = 100;
+                    break;
+                }
+                if (boss1Health <= 0)
+                {
                     LoadingVisual();
-                    playerHealth = playerHealth - chosenBoss.Attack();
-                    System.Console.WriteLine("\nPRESS ANY KEY TO GO CONTINUE");
+                    System.Console.WriteLine("You Killed " + bossName + "!!!\nCongratulations!\n");
+
+                    if (healAmount < 30)
+                    {
+                        System.Console.WriteLine("\nYour strength is now Medium!\nYour Heal amount is now 30!");
+                        healAmount = 30;
+                        playerStrength = "Medium";
+                    }
+
+                    System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
                     Console.ReadKey();
                     LoadingVisual();
-                    isPlayersTurn = true;
-                    continue;
+                    break;
                 }
-            }
-            else
-            {
-                LoadingVisual();
-                System.Console.WriteLine(bossName + " is Dead. You Destroyed Him!\nYour strength is now Medium!\nYour Heal amount is now 30!");
-                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                if (playerHealth <= 0)
+                {
+                    LoadingVisual();
+                    System.Console.WriteLine("YOU DIED\n\nGAME OVER");
+                    System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+
+
+                playerHealth = playerHealth - chosenBoss.Attack();
+                System.Console.WriteLine("\nPRESS ANY KEY TO GO CONTINUE");
                 Console.ReadKey();
-                break;
+                LoadingVisual();
+                isPlayersTurn = true;
+                continue;
             }
+
         }
     }
     public static void FightLoop2(Player player, Enemy chosenBoss, string bossName, string playerName)
     {
-        bool isPlayersTurn = true;
 
+        bool isPlayersTurn = true;
+        if (playerHealth <= 0)
+        {
+            LoadingVisual();
+            System.Console.WriteLine("YOU DIED\n\nGAME OVER");
+            System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
         while (true)
         {
-            if (boss2Health > 0)
+            if (boss2Health <= 0)
             {
-                if (userInput.ToLower() == "yes" || userInput.ToLower() == "y")
-                {
-                    LoadingVisual();
-                    break;
-                }
-                while (isPlayersTurn)
+                LoadingVisual();
+                System.Console.WriteLine(bossName + " is already dead.\n");
+
+                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                Console.ReadKey();
+                LoadingVisual();
+                break;
+            }
+
+            while (isPlayersTurn)
+            {
+                Console.Clear();
+                Console.WriteLine($"{playerName} VS {bossName}");
+                Console.WriteLine();
+                Console.WriteLine($"BOSS : {bossName}");
+                Console.WriteLine($"BOSS HEALTH : " + boss2Health);
+                Console.WriteLine($"YOUR HEALTH : " + playerHealth);
+                Console.WriteLine("\n\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
+                userInput = Console.ReadLine();
+                LoadingVisual();
+
+                if (userInput == "3" || userInput.ToLower() == "run" || userInput.ToLower() == "run away")
                 {
                     Console.Clear();
-                    Console.WriteLine($"{playerName} VS {bossName}");
-                    Console.WriteLine();
-                    Console.WriteLine($"BOSS : {bossName}");
-                    Console.WriteLine($"BOSS HEALTH : " + boss2Health);
-                    Console.WriteLine($"YOUR HEALTH : " + playerHealth);
-                    Console.WriteLine("\n\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
-                    userInput = Console.ReadLine();
-                    LoadingVisual();
-
-                    if (userInput != "1" && userInput != "2" && userInput != "3")
+                    if (boss2Health != 100)
                     {
-                        Console.WriteLine("That is not an option\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
+                        Console.WriteLine("This will reset the bosses health.\nAre you sure?\n\nYes/No");
                         userInput = Console.ReadLine();
-                        LoadingVisual();
                     }
-                    if (userInput == "3")
-                    {
-
-                        Console.Clear();
-                        Console.WriteLine("Are you sure?\nYes/No");
-                        userInput = Console.ReadLine();
-
-                        if (userInput.ToLower() == "yes" || userInput.ToLower() == "y")
-                        {
-                            Console.Clear();
-                            break;
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            continue;
-                        }
-                    }
-
-                    else if (userInput == "2")
-                    {
-                        Console.WriteLine("You heal " + healAmount + " health.");
-
-                        if (playerHealth + healAmount > 100)
-                        {
-                            playerHealth = 100;
-                        }
-                        else
-                        {
-                            playerHealth += healAmount;
-                        }
-                        System.Console.WriteLine("Your health is now: " + playerHealth);
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-                        isPlayersTurn = false;
-                    }
-                    else if (userInput == "1")
-                    {
-                        if (player.GetWeapon() == "Magma Sear Blade")
-                        {
-                            Random randomNum = new Random();
-                            int randomAttack = randomNum.Next(1, 5);
-                            switch (randomAttack)
-                            {
-                                case 1:
-                                    Console.WriteLine("You throw a searing strike!\n This does 25 damage!");
-                                    boss2Health = boss2Health - 25;
-                                    break;
-
-                                case 2:
-                                    Console.WriteLine("You do an Inferno Slash!\n This does 30 damage!");
-                                    boss2Health = boss2Health - 30;
-                                    break;
-
-                                case 3:
-                                    Console.WriteLine("You unleash Volcanic Fury!\n This does 35 damage");
-                                    boss2Health = boss2Health - 35;
-                                    break;
-                                case 4:
-                                    Console.WriteLine($"You sear slashed {bossName}!\n This does 40 damage!");
-                                    boss2Health = boss2Health - 40;
-                                    break;
-                                default:
-                                    Console.WriteLine("You missed");
-                                    break;
-                            }
-                            System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                            Console.ReadKey();
-                            LoadingVisual();
-
-                            isPlayersTurn = false;
-
-                            if (isPlayersTurn = false && boss2Health <= 0)
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("You Killed " + bossName + "!!!");
-                                System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Huge!\nYour Heal amount is now 40!");
-                                healAmount = 40;
-                                playerStrength = "Huge";
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                LoadingVisual();
-                                break;
-                            }
-                            if (playerHealth <= 0)
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("YOU DIED\n\nGAME OVER");
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                Environment.Exit(0);
-                            }
-                        }
-
-                    }
-
-                    if (player.GetWeapon() == "Bogreaper Scythe")
-                    {
-                        Console.WriteLine($"You Bog Sliced {bossName}");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-
-                        isPlayersTurn = false;
-                        break;
-                    }
-                    else if (player.GetWeapon() == "Glacial Embrace Blade")
-                    {
-                        Console.WriteLine($"You Glacial Sliced {bossName}");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-
-                        isPlayersTurn = false;
-                        break;
-                    }
-                    else if (player.GetWeapon() == "Windshard Longbow")
-                    {
-                        Console.WriteLine($"You Windshard bowed {bossName}!");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-                        isPlayersTurn = false;
-                        break;
-                    }
+                    isPlayersTurn = false;
+                    break;
                 }
 
-                if (isPlayersTurn == false)
+                else if (userInput == "2")
                 {
-                    System.Console.WriteLine("Now " + bossName + "'s turn to Attack!");
+                    Console.WriteLine("You heal " + healAmount + " health.");
+
+                    if (playerHealth + healAmount > 100)
+                    {
+                        playerHealth = 100;
+                    }
+                    else
+                    {
+                        playerHealth += healAmount;
+                    }
+                    System.Console.WriteLine("Your health is now: " + playerHealth);
                     System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                     Console.ReadKey();
-                    if (boss2Health <= 0)
+                    LoadingVisual();
+                    isPlayersTurn = false;
+                }
+
+                else if (userInput == "1")
+                {
+
+                    Random randomNum = new Random();
+                    int randomAttack = randomNum.Next(1, 5);
+                    if (playerStrength == "weak")
                     {
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 10 damage!");
+                                boss1Health = boss1Health - 10;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 15 damage!");
+                                boss1Health = boss1Health - 15;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 20 damage");
+                                boss1Health = boss1Health - 20;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 25 damage!");
+                                boss1Health = boss1Health - 25;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
                         LoadingVisual();
-                        System.Console.WriteLine("You Killed " + bossName + "!!!");
-                        System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Huge!\nYour Heal amount is now 40!");
-                        healAmount = 40;
-                        playerStrength = "Huge";
-                        System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                    }
+                    if (playerStrength == "Medium")
+                    {
+
+
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 25 damage!");
+                                boss2Health = boss2Health - 20;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 30 damage!");
+                                boss2Health = boss2Health - 25;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 35 damage");
+                                boss2Health = boss2Health - 30;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 40 damage!");
+                                boss2Health = boss2Health - 35;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                    }
+                    if (playerStrength == "Huge")
+                    {
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 30 damage!");
+                                boss2Health = boss2Health - 25;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 35 damage!");
+                                boss2Health = boss2Health - 30;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 40 damage");
+                                boss2Health = boss2Health - 35;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 45 damage!");
+                                boss2Health = boss2Health - 40;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                    }
+                    if (playerStrength == "Godly")
+                    {
+                        Console.WriteLine("You smite him. He is dead.\n\n");
+                        boss2Health = boss2Health - 10000000;
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                         Console.ReadKey();
                         LoadingVisual();
                         break;
                     }
+
+
                     if (playerHealth <= 0)
                     {
                         LoadingVisual();
@@ -714,252 +771,272 @@ class Program
                         Console.ReadKey();
                         Environment.Exit(0);
                     }
+
+                }
+                isPlayersTurn = false;
+
+            }
+
+
+            if (isPlayersTurn == false)
+            {
+                if (userInput == "y" || userInput.ToLower() == "yes" || userInput.ToLower() == "yes ")
+                {
+                    boss1Health = 80;
+                    break;
+                }
+                if (boss2Health <= 0)
+                {
                     LoadingVisual();
-                    playerHealth = playerHealth - chosenBoss.Attack();
-                    System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                    System.Console.WriteLine("You Killed " + bossName + "!!!");
+
+                    if (healAmount < 40)
+                    {
+                        System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Huge!\nYour Heal amount is now 40!");
+                        healAmount = 40;
+                        playerStrength = "Huge";
+                    }
+                    System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
                     Console.ReadKey();
                     LoadingVisual();
-                    isPlayersTurn = true;
-                    continue;
+                    break;
                 }
-            }
-            else
-            {
-                LoadingVisual();
-                System.Console.WriteLine(bossName + " is Dead. You Destroyed Him!\nYour strength is now Huge!\nYour Heal amount is now 40!");
-                healAmount = 40;
-                playerStrength = "Huge";
-                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                if (playerHealth <= 0)
+                {
+                    LoadingVisual();
+                    System.Console.WriteLine("YOU DIED\n\nGAME OVER");
+                    System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+
+
+                playerHealth = playerHealth - chosenBoss.Attack();
+                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                 Console.ReadKey();
-                break;
+                LoadingVisual();
+                isPlayersTurn = true;
+                continue;
             }
         }
+
     }
     public static void FightLoop3(Player player, Enemy chosenBoss, string bossName, string playerName)
     {
         bool isPlayersTurn = true;
-
+        if (playerHealth <= 0)
+        {
+            LoadingVisual();
+            System.Console.WriteLine("YOU DIED\n\nGAME OVER");
+            System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
         while (true)
         {
-            if (boss3Health > 0)
+            if (boss3Health <= 0)
             {
-                if (userInput.ToLower() == "yes" || userInput.ToLower() == "y")
+                LoadingVisual();
+                System.Console.WriteLine(bossName + " is already dead.\n");
+                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                Console.ReadKey();
+                LoadingVisual();
+                break;
+            }
+
+            while (isPlayersTurn)
+            {
+                Console.Clear();
+                Console.WriteLine($"{playerName} VS {bossName}");
+                Console.WriteLine();
+                Console.WriteLine($"BOSS : {bossName}");
+                Console.WriteLine($"BOSS HEALTH : " + boss3Health);
+                Console.WriteLine($"YOUR HEALTH : " + playerHealth);
+                Console.WriteLine("\n\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
+                userInput = Console.ReadLine();
+                LoadingVisual();
+
+                if (userInput == "3" || userInput.ToLower() == "run" || userInput.ToLower() == "run away")
                 {
+                    Console.Clear();
+                    if (boss3Health != 125)
+                    {
+                        Console.WriteLine("This will reset the bosses health.\nAre you sure?\n\nYes/No");
+                        userInput = Console.ReadLine();
+                    }
+
+                    isPlayersTurn = false;
+                    break;
+                }
+
+                else if (userInput == "2" || userInput.ToLower() == "h" || userInput.ToLower() == "heal")
+                {
+                    Console.WriteLine("You heal " + healAmount + " health.");
+
+                    if (playerHealth + healAmount > 100)
+                    {
+                        playerHealth = 100;
+                    }
+                    else
+                    {
+                        playerHealth += healAmount;
+                    }
+
+                    System.Console.WriteLine("Your health is now: " + playerHealth);
+                    System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                    Console.ReadKey();
+                    LoadingVisual();
+                    isPlayersTurn = false;
+
+                }
+
+                else if (userInput == "1" || userInput.ToLower() == "a" || userInput.ToLower() == "attack")
+                {
+                    Random randomNum = new Random();
+                    int randomAttack = randomNum.Next(1, 5);
+                    if (playerStrength == "weak")
+                    {
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 10 damage!");
+                                boss1Health = boss1Health - 10;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 15 damage!");
+                                boss1Health = boss1Health - 15;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 20 damage");
+                                boss1Health = boss1Health - 20;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 25 damage!");
+                                boss1Health = boss1Health - 25;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                    }
+                    if (playerStrength == "Medium")
+                    {
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 25 damage!");
+                                boss3Health = boss3Health - 20;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 30 damage!");
+                                boss3Health = boss3Health - 25;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 35 damage");
+                                boss3Health = boss3Health - 30;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 40 damage!");
+                                boss3Health = boss3Health - 35;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                    }
+                    if (playerStrength == "Huge")
+                    {
+                        switch (randomAttack)
+                        {
+                            case 1:
+                                Console.WriteLine("You throw a searing strike!\n This does 30 damage!");
+                                boss3Health = boss3Health - 25;
+                                break;
+
+                            case 2:
+                                Console.WriteLine("You do an Inferno Slash!\n This does 35 damage!");
+                                boss3Health = boss3Health - 30;
+                                break;
+
+                            case 3:
+                                Console.WriteLine("You unleash Volcanic Fury!\n This does 40 damage");
+                                boss3Health = boss3Health - 35;
+                                break;
+                            case 4:
+                                Console.WriteLine($"You sear slashed {bossName}!\n This does 45 damage!");
+                                boss3Health = boss3Health - 40;
+                                break;
+                            default:
+                                Console.WriteLine("You missed");
+                                break;
+
+                        }
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                    }
+                    if (playerStrength == "Godly")
+                    {
+                        Console.WriteLine("You smite him. He is dead.\n\n");
+                        boss2Health = boss2Health - 10000000;
+                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                        Console.ReadKey();
+                        LoadingVisual();
+                        break;
+                    }
+                    isPlayersTurn = false;
+                }
+
+            }
+
+            if (isPlayersTurn == false)
+            {
+                if (userInput == "y" || userInput.ToLower() == "yes" || userInput.ToLower() == "yes ")
+                {
+                    boss3Health = 125;
+                    break;
+                }
+                if (boss3Health <= 0)
+                {
+                    LoadingVisual();
+                    System.Console.WriteLine("You Killed " + bossName + "!!!");
+                    System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Godly!\nYour Heal amount is now 1,000,000!");
+                    healAmount = 1000000;
+                    playerStrength = "Godly";
+                    System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                    Console.ReadKey();
                     LoadingVisual();
                     break;
                 }
-                while (isPlayersTurn)
+                if (playerHealth <= 0)
                 {
-                    Console.Clear();
-                    Console.WriteLine($"{playerName} VS {bossName}");
-                    Console.WriteLine();
-                    Console.WriteLine($"BOSS : {bossName}");
-                    Console.WriteLine($"BOSS HEALTH : " + boss3Health);
-                    Console.WriteLine($"YOUR HEALTH : " + playerHealth);
-                    Console.WriteLine("\n\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
-                    userInput = Console.ReadLine();
                     LoadingVisual();
-
-                    if (userInput != "1" && userInput != "2" && userInput != "3")
-                    {
-                        Console.WriteLine("That is not an option\n\n1. >>ATTACK \n2. >>HEAL " + healAmount + "\n3. >>RUN AWAY");
-                        userInput = Console.ReadLine();
-                        LoadingVisual();
-                    }
-                    if (userInput == "3")
-                    {
-
-                        Console.Clear();
-                        Console.WriteLine("Are you sure?\nYes/No");
-                        userInput = Console.ReadLine();
-
-                        if (userInput.ToLower() == "yes" || userInput.ToLower() == "y")
-                        {
-                            Console.Clear();
-                            break;
-
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            continue;
-                        }
-
-                    }
-
-                    else if (userInput == "2" || userInput.ToLower() == "h" || userInput.ToLower() == "heal")
-                    {
-                        Console.WriteLine("You heal " + healAmount + " health.");
-
-                        if (playerHealth + healAmount > 100)
-                        {
-                            playerHealth = 100;
-                        }
-                        else
-                        {
-                            playerHealth += healAmount;
-                        }
-
-                        System.Console.WriteLine("Your health is now: " + playerHealth);
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-                        isPlayersTurn = false;
-
-                    }
-                    if (playerHealth <= 0)
-                    {
-                        LoadingVisual();
-                        System.Console.WriteLine("YOU DIED\n\nGAME OVER");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                        Console.ReadKey();
-                        Environment.Exit(0);
-                    }
-                    if (boss3Health <= 0)
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("You Killed " + bossName + "!!!");
-                                System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Godly!\nYour Heal amount is now 1,000,000!");
-                                healAmount = 1000000;
-                                playerStrength = "Godly";
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                LoadingVisual();
-                                break;
-                            }
-                    else if (userInput == "1" || userInput.ToLower() == "a" || userInput.ToLower() == "attack")
-                    {
-                        if (player.GetWeapon() == "Magma Sear Blade")
-                        {
-                            Random randomNum = new Random();
-                            int randomAttack = randomNum.Next(1, 5);
-                            switch (randomAttack)
-                            {
-                                case 1:
-                                    Console.WriteLine("You throw a searing strike!\n This does 30 damage!");
-                                    boss3Health = boss3Health - 30;
-                                    break;
-
-                                case 2:
-                                    Console.WriteLine("You do an Inferno Slash!\n This does 35 damage!");
-                                    boss3Health = boss3Health - 35;
-                                    break;
-
-                                case 3:
-                                    Console.WriteLine("You unleash Volcanic Fury!\n This does 40 damage");
-                                    boss3Health = boss3Health - 40;
-                                    break;
-                                case 4:
-                                    Console.WriteLine($"You sear slashed {bossName}!\n This does 45 damage!");
-                                    boss3Health = boss3Health - 45;
-                                    break;
-                                default:
-                                    Console.WriteLine("You missed");
-                                    break;
-                            }
-                            System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                            Console.ReadKey();
-                            LoadingVisual();
-
-
-                            isPlayersTurn = false;
-
-                            if (isPlayersTurn = false && boss3Health <= 0)
-                            {
-                                LoadingVisual();
-                                System.Console.WriteLine("You Killed " + bossName + "!!!");
-                                System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Godly!\nYour Heal amount is now 1,000,000!");
-                                healAmount = 1000000;
-                                playerStrength = "Godly";
-                                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                                Console.ReadKey();
-                                LoadingVisual();
-                                break;
-                            }
-
-
-                        }
-
-                    }
-
-                    if (player.GetWeapon() == "Bogreaper Scythe")
-                    {
-                        Console.WriteLine($"You Bog Sliced {bossName}");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-
-                        isPlayersTurn = false;
-                        break;
-                    }
-                    else if (player.GetWeapon() == "Glacial Embrace Blade")
-                    {
-                        Console.WriteLine($"You Glacial Sliced {bossName}");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-
-                        isPlayersTurn = false;
-                        break;
-                    }
-                    else if (player.GetWeapon() == "Windshard Longbow")
-                    {
-                        Console.WriteLine($"You Windshard bowed {bossName}!");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                        Console.ReadKey();
-
-                        isPlayersTurn = false;
-                        break;
-                    }
-                }
-
-                if (isPlayersTurn == false)
-                {
-                    Console.Clear();
-                    System.Console.WriteLine("Now " + bossName + "'s turn to Attack!");
-                    System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                    LoadingVisual();
-
-                    if (boss3Health <= 0)
-                    {
-                        LoadingVisual();
-                        System.Console.WriteLine("You Killed " + bossName + "!!!");
-                        System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Godly!\nYour Heal amount is now 1,000,000!");
-                        healAmount = 1000000;
-                        playerStrength = "Godly";
-                        System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                        Console.ReadKey();
-                        LoadingVisual();
-                        break;
-                    }
-                    if (playerHealth <= 0)
-                    {
-                        LoadingVisual();
-                        System.Console.WriteLine("YOU DIED\n\nGAME OVER");
-                        System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
-                        Console.ReadKey();
-                        Environment.Exit(0);
-                    }
-                    LoadingVisual();
-                    playerHealth = playerHealth - chosenBoss.Attack();
-                    System.Console.WriteLine("\nPRESS ANY KEY TO GO CONTINUE");
+                    System.Console.WriteLine("YOU DIED\n\nGAME OVER");
+                    System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
                     Console.ReadKey();
-                    LoadingVisual();
-                    isPlayersTurn = true;
-                    continue;
+                    Environment.Exit(0);
                 }
-            }
-            else
-            {
-                LoadingVisual();
+                Console.Clear();
 
-                System.Console.WriteLine("\nCongratulations!\n\nYour strength is now Godly!\nYour Heal amount is now 1,000,000!");
-                healAmount = 1000000;
-                playerStrength = "Godly";
-                System.Console.WriteLine("\nPRESS ANY KEY TO EXIT");
+                playerHealth = playerHealth - chosenBoss.Attack();
+                System.Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
                 Console.ReadKey();
-                break;
+                LoadingVisual();
+                isPlayersTurn = true;
+                continue;
             }
         }
+
     }
 }
 
